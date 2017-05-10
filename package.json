@@ -2,7 +2,7 @@
   "name": "feychou.github.io",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://feychou.github.io/my-app",
+  "homepage": "https://feychou.github.io",
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
