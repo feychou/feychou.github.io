@@ -51,3 +51,15 @@
   border-bottom: 2px solid #444;
   display: block;
 }
+
+.body-column-left {
+  float: left;
+  width: 350px;
+  background-color: pink;
+}
+
+.body-column-right {
+  float: right;
+  width: 350px;
+  background-color: pink;
+}

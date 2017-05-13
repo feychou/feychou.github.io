@@ -22,6 +22,18 @@ class App extends Component {
             </div>
           </div>
         </div>
+
+        <div className="App-body">
+          <div className="body-column-left">
+            BU
+            <span></span>
+          </div>
+
+          <div className="body-column-right">
+            BU
+            <span></span>
+          </div>
+        </div>
       </div>
     );
   }
