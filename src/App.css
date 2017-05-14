@@ -123,3 +123,35 @@ a {
   border-right: 2px solid pink;
   padding: 10px 20px;
 }
+
+@media (max-width: 775px) {
+  .App-header {
+    width: 355px;
+    margin: auto;
+  }
+
+  .App-body {
+    clear: both;
+    width: 355px;
+    margin: auto;
+    padding-top: 20px;
+  }
+
+  .header-info-box {
+    float: none;
+  }
+  
+  .body-column-right {
+    float: none;
+  }
+
+  .body-column-right .stats-box-header {
+    text-align: right;
+  } 
+}
+
+@media (max-width: 420px) {
+  .App {
+    padding: 30px 0;
+  } 
+}
