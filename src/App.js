@@ -7,6 +7,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <span className="logo">Real Life</span>
+          <span className="logo-2">Real Life</span>
           <div className="header-info-box">
             <div className="info-box-row">
               <span className="info-box-title">character</span>
@@ -38,7 +39,7 @@ class App extends Component {
 
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Metatype</span>
-                  <span>Weeaboo Princess</span>
+                  <span>Twee Princess</span>
                 </div>
 
                 <div className="stats-box-entry">

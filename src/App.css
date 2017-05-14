@@ -28,6 +28,7 @@ a {
 
 .App-header {
   height: 80px;
+  position: relative;
 }
 
 .App-body {
@@ -37,6 +38,15 @@ a {
 .logo {
   font-family: ElectroShackle;
   font-size: 60px;
+  color: pink;
+}
+
+.logo-2 {
+  font-family: ElectroShackle;
+  font-size: 60px;
+  position: absolute;
+  left: 4px;
+  bottom: 8px;
 }
 
 .header-info-box {
@@ -52,7 +62,6 @@ a {
   font-family: ElectroShackle;
   font-size: 15px;
   font-weight: bold;
-  text-transform: uppercase;
   margin-right: 5px;
   float: left;
 }
@@ -82,7 +91,6 @@ a {
 }
 
 .stats-box-header span {
-  text-transform: uppercase;
   background-color: pink;
   padding: 2px 10px;
   font-family: ElectroShackle;
