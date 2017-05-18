@@ -76,6 +76,13 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
+                  <span className="stats-box-tag">Goodreads</span>
+                  <span>
+                    <a target="_blank" href="https://www.goodreads.com/feyfeyfey">Federica Recanatini</a>
+                  </span>
+                </div>
+
+                <div className="stats-box-entry">
                   <span className="stats-box-tag">Facebook</span>
                   <span>
                     <a target="_blank" href="https://www.facebook.com/federica.recanatini">federica.recanatini</a>
