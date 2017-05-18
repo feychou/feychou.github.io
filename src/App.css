@@ -1,6 +1,6 @@
 @font-face {
   font-family: ElectroShackle;
-  src: url(../public/ElectroShackle.otf);
+  src: url(../public/ElectroShackle.woff);
 }
 
 html, body, #root {
@@ -30,6 +30,12 @@ a {
   padding: 30px;
 }
 
+.App:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 .App-header {
   height: 80px;
   position: relative;
@@ -51,6 +57,7 @@ a {
   position: absolute;
   left: 4px;
   bottom: 8px;
+  height: 68px;
 }
 
 .header-info-box {
@@ -76,14 +83,14 @@ a {
   display: block;
 }
 
-.body-column-left {
-  float: left;
+.body-column-left,
+.body-column-right {
+  display: inline-block;
   width: 350px;
 }
 
 .body-column-right {
   float: right;
-  width: 350px;
 }
 
 .stats-box {
@@ -152,21 +159,14 @@ a {
 @media (max-width: 420px) {
   .App {
     padding: 30px 0;
-    height: 185%;
-  } 
-}
-
-@media (min-width: 775px) {
-  .App {
-    height: 100%;
   }
 }
+
 
 @media (min-width: 1200px) {
   .App {
     max-width: 820px;
     font-size: 13px;
-    height: 100%;
   }
 
   .App-header {
