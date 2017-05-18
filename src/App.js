@@ -83,6 +83,27 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
+                  <span className="stats-box-tag">Coursera</span>
+                  <span>
+                    <a target="_blank" href="https://www.coursera.org/user/i/91390a08d1d625f59a626ac7070a6fd3">alisa</a>
+                  </span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Duolingo</span>
+                  <span>
+                    <a target="_blank" href="https://www.duolingo.com/feychou">feychou</a>
+                  </span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Memrise</span>
+                  <span>
+                    <a target="_blank" href="https://www.memrise.com/user/feychoo/courses/learning/">feychoo</a>
+                  </span>
+                </div>
+
+                <div className="stats-box-entry">
                   <span className="stats-box-tag">Facebook</span>
                   <span>
                     <a target="_blank" href="https://www.facebook.com/federica.recanatini">federica.recanatini</a>
@@ -106,29 +127,85 @@ class App extends Component {
 
             <div className="stats-box">
               <div className="stats-box-header">
-                <span>Gear</span>
+                <span>Projects</span>
               </div>
               <div className="stats-box-entries">
                 <div className="stats-box-entry">
-                  <span>Clunky cybersneakers</span>
+                  <span className="stats-box-tag">Tsuki 月</span>
+                  <span>A Messenger bot that sends you</span>
+                </div>
+
+                <div className="stats-box-entry">snapshots from space [
+                  <a target="_blank" href="https://www.facebook.com/satounotsuki">link</a>
+                ]</div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Nukleus</span>
+                  <span>Collection of React UI components</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Kawaii bandaids</span>
+                  <span>for kununu [
+                    <a target="_blank" href="https://kununu.github.io/nukleus/">link</a>
+                  ]</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Vitamin D and sunscreen</span>
+                  <span className="stats-box-tag">Ouija</span>
+                  <span>A gridfont editor [
+                    <a target="_blank" href="https://baphomet-berlin.github.io/ouija/">link</a>
+                  ]</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Pink Nintendo DS</span>
+                  <span className="stats-box-tag">Brainjig</span>
+                  <span>Browser puzzle game featuring</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Obligatory Nekomimi</span>
+                  <span>Jigglipuffs and Pikachus [
+                    <a target="_blank" href="http://feychou.github.io/brainjig/">link</a>
+                  ]</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="stats-box">
+              <div className="stats-box-header">
+                <span>Cyberdeck</span>
+              </div>
+              <div className="stats-box-entries">
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">TUXEDO Book XC1407 v2</span>
                 </div>
 
+                <div className="stats-box-entry">
+                  <span>14&quot; matt Full-HD IPS-Display</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Aluminium-Cover</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>NVIDIA Geforce GTX 1050 Ti Grafik</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>500 GB HDD (HGST/WD / 7.200 rpm / 2,5&quot;)</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>250 GB Samsung 850 EVO</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Intel Core i7 Quad-Core</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>16GB RAM</span>
+                </div>
               </div>
             </div>
           </div>
@@ -180,6 +257,95 @@ class App extends Component {
 
             <div className="stats-box">
               <div className="stats-box-header">
+                <span>Adept Powers or Other Abilities</span>
+              </div>
+              <div className="stats-box-entries">
+
+                <div className="stats-box-entry">
+                  <span>Hacking web applications – case studies of</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>award-winning bugs in Google, Yahoo,</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span> Mozilla and more </span>
+                  <span>[
+                    <a target="_blank" href="https://silesiasecuritylab.com/services/workshop/">link</a>
+                  ]</span>
+                  <span> [
+                    <a target="_blank" href="http://blog.deepsec.net/deepsec-2016-workshop-hacking-web-applications-case-studies-of-award-winning-bugs-in-google-yahoo-mozilla-and-more-dawid-czagan/">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Lemmings Winter Batch - Incubator focused</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>on AI and chatbots </span>
+                  <span>[
+                    <a target="_blank" href="https://lemmings.io/">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Internet History, Technology, and Security</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>[
+                    <a target="_blank" href="https://www.coursera.org/learn/internet-history">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Introduction to Game Design </span>
+                  <span>[
+                    <a target="_blank" href="https://www.coursera.org/learn/game-design">link</a>
+                  ] </span>
+                  <span>[
+                    <a target="_blank" href="http://i.imgur.com/XsPIM3P.jpg">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Dino 101: Dinosaur Paleobiology </span>
+                  <span>[
+                    <a target="_blank" href="https://www.coursera.org/learn/dino101">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Paleontology: Theropod Dinosaurs and the</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Origin of Birds </span>
+                  <span>[
+                    <a target="_blank" href="https://www.coursera.org/learn/theropods-birds/">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Philosophy and the Sciences: Introduction</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>to the Philosophy of Cognitive Sciences </span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>[
+                    <a target="_blank" href="https://www.coursera.org/learn/philosophy-cognitive-sciences/">link</a>
+                  ]</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="stats-box">
+              <div className="stats-box-header">
                 <span>Augmentations</span>
               </div>
               <div className="stats-box-entries">
@@ -195,46 +361,29 @@ class App extends Component {
 
             <div className="stats-box">
               <div className="stats-box-header">
-                <span>Projects</span>
+                <span>Gear</span>
               </div>
               <div className="stats-box-entries">
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Tsuki 月</span>
-                  <span>A Messenger bot that sends you</span>
-                </div>
-
-                <div className="stats-box-entry">snapshots from space [
-                  <a target="_blank" href="https://www.facebook.com/satounotsuki">link</a>
-                ]</div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Nukleus</span>
-                  <span>Collection of React UI components</span>
+                  <span>Clunky cybersneakers</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>for kununu [
-                    <a target="_blank" href="https://kununu.github.io/nukleus/">link</a>
-                  ]</span>
+                  <span>Kawaii bandaids</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Ouija</span>
-                  <span>A gridfont editor [
-                    <a target="_blank" href="https://baphomet-berlin.github.io/ouija/">link</a>
-                  ]</span>
+                  <span>Vitamin D and sunscreen</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Brainjig</span>
-                  <span>Browser puzzle game featuring</span>
+                  <span>Pink Nintendo DS</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Jigglipuffs and Pikachus [
-                    <a target="_blank" href="http://feychou.github.io/brainjig/">link</a>
-                  ]</span>
+                  <span>Obligatory Nekomimi</span>
                 </div>
+
               </div>
             </div>
 

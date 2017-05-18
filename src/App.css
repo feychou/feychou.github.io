@@ -14,7 +14,6 @@ a {
 }
 
 .App {
-  height: 100%;
   font-family: "Courier New";
   font-size: 12px;
   color: #444;
@@ -125,10 +124,6 @@ a {
 }
 
 @media (max-width: 775px) {
-  .App {
-    height: 145%;
-  }
-
   .App-header {
     width: 355px;
     margin: auto;
@@ -157,13 +152,21 @@ a {
 @media (max-width: 420px) {
   .App {
     padding: 30px 0;
+    height: 185%;
   } 
+}
+
+@media (min-width: 775px) {
+  .App {
+    height: 100%;
+  }
 }
 
 @media (min-width: 1200px) {
   .App {
     max-width: 820px;
     font-size: 13px;
+    height: 100%;
   }
 
   .App-header {
