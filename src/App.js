@@ -291,6 +291,16 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
+                  <span>Bitcoin and Cryptocurrency Technologies </span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>[
+                    <a target="_blank" href="https://www.coursera.org/learn/cryptocurrency">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
                   <span>Internet History, Technology, and Security</span>
                 </div>
 
