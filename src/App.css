@@ -163,18 +163,27 @@ a {
 
 
 @media (min-width: 1200px) {
-  .App {
-    max-width: 820px;
-    font-size: 13px;
+  .App,
+  .App-header {
+    font-size: 16px;
   }
 
-  .App-header {
-    font-size: 12px;
+  .App {
+    max-width: 950px;
+  }
+
+  .header-info-box {
+    width: 400px;
+  }
+
+  .logo,
+  .logo-2 {
+    font-size: 75px;
   }
 
   .body-column-left,
   .body-column-right {
-    width:400px;
+    width: 460px;
   }
 }
 
