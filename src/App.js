@@ -104,6 +104,13 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
+                  <span className="stats-box-tag">Medium</span>
+                  <span>
+                    <a target="_blank" href="https://medium.com/@federicarecanatini">@federicarecanatini</a>
+                  </span>
+                </div>
+
+                <div className="stats-box-entry">
                   <span className="stats-box-tag">Facebook</span>
                   <span>
                     <a target="_blank" href="https://www.facebook.com/federica.recanatini">federica.recanatini</a>
@@ -153,6 +160,17 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Ouija</span>
                   <span>A gridfont editor [
+                    <a target="_blank" href="https://baphomet-berlin.github.io/ouija/">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">nocker</span>
+                  <span>Dockerized Node app skeleton for</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>development and production [
                     <a target="_blank" href="https://baphomet-berlin.github.io/ouija/">link</a>
                   ]</span>
                 </div>
