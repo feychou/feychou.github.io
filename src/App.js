@@ -138,6 +138,15 @@ class App extends Component {
               </div>
               <div className="stats-box-entries">
                 <div className="stats-box-entry">
+                  <span className="stats-box-tag">Chibo</span>
+                  <span>An app to test your ひらがな and</span>
+                </div>
+
+                <div className="stats-box-entry">カタカナ knowledge [
+                  <a target="_blank" href="https://feychou.github.io/chibo/">link</a>
+                ]</div>
+
+                <div className="stats-box-entry">
                   <span className="stats-box-tag">Tsuki 月</span>
                   <span>A Messenger bot that sends you</span>
                 </div>
@@ -240,6 +249,10 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
+                  <span>Clojure ClojureScript Reagent re-frame</span>
+                </div>
+
+                <div className="stats-box-entry">
                   <span>Jest</span>
                 </div>
 
@@ -268,7 +281,7 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Python  Clojure  Haskell</span>
+                  <span>Python Haskell</span>
                 </div>
               </div>
             </div>
@@ -298,11 +311,11 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Lemmings Winter Batch - Incubator focused</span>
+                  <span>Lemmings - Incubator focused on AI and</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>on AI and chatbots </span>
+                  <span>chatbots </span>
                   <span>[
                     <a target="_blank" href="https://lemmings.io/">link</a>
                   ]</span>
