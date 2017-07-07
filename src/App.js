@@ -156,7 +156,7 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">Javascript [
-                  <a target="_blank" href="https://feychou.github.io/chibo/">link</a>
+                  <a target="_blank" href="https://feychou.github.io/how-do-i-lib/">link</a>
                 ]</div>
 
                 <div className="stats-box-entry">
@@ -193,7 +193,7 @@ class App extends Component {
 
                 <div className="stats-box-entry">
                   <span>development and production [
-                    <a target="_blank" href="https://baphomet-berlin.github.io/ouija/">link</a>
+                    <a target="_blank" href="https://github.com/feychou/nocker">link</a>
                   ]</span>
                 </div>
 
