@@ -147,6 +147,19 @@ class App extends Component {
                 ]</div>
 
                 <div className="stats-box-entry">
+                  <span className="stats-box-tag">Javascript: how do I even lib?</span>
+                  <span>Slides to my</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>talk about creating and consuming libs in</span>
+                </div>
+
+                <div className="stats-box-entry">Javascript [
+                  <a target="_blank" href="https://feychou.github.io/chibo/">link</a>
+                ]</div>
+
+                <div className="stats-box-entry">
                   <span className="stats-box-tag">Tsuki 月</span>
                   <span>A Messenger bot that sends you</span>
                 </div>
