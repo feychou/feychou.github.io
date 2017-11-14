@@ -85,7 +85,7 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Coursera</span>
                   <span>
-                    <a target="_blank" href="https://www.coursera.org/user/i/91390a08d1d625f59a626ac7070a6fd3">alisa</a>
+                    <a target="_blank" href="https://www.coursera.org/user/91390a08d1d625f59a626ac7070a6fd3">alisa</a>
                   </span>
                 </div>
 
@@ -137,6 +137,15 @@ class App extends Component {
                 <span>Projects</span>
               </div>
               <div className="stats-box-entries">
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Mr Peen</span>
+                  <span>A dress up game starring the</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>chibiest character [<a target="_blank" href="https://mrpeen.github.io">link</a>]</span>
+                </div>
+
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Chibo</span>
                   <span>An app to test your ひらがな and</span>
@@ -303,7 +312,20 @@ class App extends Component {
               <div className="stats-box-header">
                 <span>Adept Powers or Other Abilities</span>
               </div>
+
               <div className="stats-box-entries">
+
+                <div className="stats-box-entry">
+                  <span>International Cyber Conflicts - [
+                    <a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/9UEBEB2SGPNW">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>
+                    [<a target="_blank" href="https://www.coursera.org/learn/cyber-conflicts">link</a>]
+                  </span>
+                </div>
 
                 <div className="stats-box-entry">
                   <span>Hacking web applications – case studies of</span>
