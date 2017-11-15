@@ -316,7 +316,7 @@ class App extends Component {
               <div className="stats-box-entries">
 
                 <div className="stats-box-entry">
-                  <span>International Cyber Conflicts - [
+                  <span>International Cyber Conflicts [
                     <a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/9UEBEB2SGPNW">link</a>
                   ]</span>
                 </div>
