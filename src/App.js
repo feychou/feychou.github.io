@@ -137,6 +137,20 @@ class App extends Component {
                 <span>Projects</span>
               </div>
               <div className="stats-box-entries">
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">The Incredible True Story of</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Antifragility</span>
+                  <span>Antifragility in the form of</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>children story [<a target="_blank" href="https://feychou.github.io/the-incredible-true-story-of-antifragility/">link</a>]</span>
+                </div>
+
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Mr Peen</span>
                   <span>A dress up game starring the</span>
@@ -314,6 +328,20 @@ class App extends Component {
               </div>
 
               <div className="stats-box-entries">
+
+                <div className="stats-box-entry">
+                  <span>Blockchain Basics</span>
+                  <span>[
+                    <a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/22878BJVAKV6">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Smart Contracts</span>
+                  <span>[
+                    <a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/8G2RWJAKYQU6">link</a>
+                  ]</span>                
+                </div>
 
                 <div className="stats-box-entry">
                   <span>International Cyber Conflicts [
