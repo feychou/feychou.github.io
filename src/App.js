@@ -78,7 +78,7 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Goodreads</span>
                   <span>
-                    <a target="_blank" href="https://www.goodreads.com/feyfeyfey">Federica Recanatini</a>
+                    <a target="_blank" href="https://www.goodreads.com/feyfeyfey">Fey</a>
                   </span>
                 </div>
 
@@ -106,21 +106,14 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Medium</span>
                   <span>
-                    <a target="_blank" href="https://medium.com/@federicarecanatini">@federicarecanatini</a>
+                    <a target="_blank" href="https://medium.com/@fey.chu">@fey.chu</a>
                   </span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Facebook</span>
+                  <span className="stats-box-tag">Spotify</span>
                   <span>
-                    <a target="_blank" href="https://www.facebook.com/federica.recanatini">federica.recanatini</a>
-                  </span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Kleiderkreisel</span>
-                  <span>
-                    <a target="_blank" href="https://www.kleiderkreisel.at/mitglieder/1518602-ashlotte">ashlotte</a>
+                    <a target="_blank" href="https://open.spotify.com/user/11175069450">Fey</a>
                   </span>
                 </div>
 
@@ -149,15 +142,6 @@ class App extends Component {
 
                 <div className="stats-box-entry">
                   <span>children story [<a target="_blank" href="https://feychou.github.io/the-incredible-true-story-of-antifragility/">link</a>]</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Mr Peen</span>
-                  <span>A dress up game starring the</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>chibiest character [<a target="_blank" href="https://mrpeen.github.io">link</a>]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -365,9 +349,6 @@ class App extends Component {
 
                 <div className="stats-box-entry">
                   <span> Mozilla and more </span>
-                  <span>[
-                    <a target="_blank" href="https://silesiasecuritylab.com/services/workshop/">link</a>
-                  ]</span>
                   <span> [
                     <a target="_blank" href="http://blog.deepsec.net/deepsec-2016-workshop-hacking-web-applications-case-studies-of-award-winning-bugs-in-google-yahoo-mozilla-and-more-dawid-czagan/">link</a>
                   ]</span>
