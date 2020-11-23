@@ -6,9 +6,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <span className="logo">Real Life</span>
-          <span className="logo-2">Real Life</span>
-          <div className="header-info-box">
+          <div className="App-logo">
+            <span className="logo">Real Life</span>
+            <span className="logo-2">Real Life</span>
+          </div>
+          <div className="Player-Info">
             <div className="info-box-row">
               <span className="info-box-title">character</span>
               <span className="info-box-data">Fey</span>
@@ -23,7 +25,6 @@ class App extends Component {
             </div>
           </div>
         </div>
-
         <div className="App-body">
           <div className="body-column-left">
 
@@ -62,16 +63,16 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Stackoverflow</span>
+                  <span className="stats-box-tag">CodeSandbox</span>
                   <span>
-                    <a target="_blank" href="http://stackoverflow.com/users/story/2255082">feychou</a>
+                    <a target="_blank" href="https://codesandbox.io/u/feychou">feychou</a>
                   </span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Steam</span>
+                  <span className="stats-box-tag">Stackoverflow</span>
                   <span>
-                    <a target="_blank" href="http://steamcommunity.com/id/feychou/">feychou</a>
+                    <a target="_blank" href="http://stackoverflow.com/users/story/2255082">feychou</a>
                   </span>
                 </div>
 
@@ -97,9 +98,9 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Memrise</span>
+                  <span className="stats-box-tag">Steam</span>
                   <span>
-                    <a target="_blank" href="https://www.memrise.com/user/feychoo/courses/learning/">feychoo</a>
+                    <a target="_blank" href="http://steamcommunity.com/id/feychou/">feychou</a>
                   </span>
                 </div>
 
@@ -111,198 +112,10 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Spotify</span>
-                  <span>
-                    <a target="_blank" href="https://open.spotify.com/user/11175069450">Fey</a>
-                  </span>
-                </div>
-
-                <div className="stats-box-entry">
                   <span className="stats-box-tag">email</span>
                   <span>federica.recanatini@gmail.com</span>
                 </div>
 
-              </div>
-            </div>
-
-            <div className="stats-box">
-              <div className="stats-box-header">
-                <span>Projects</span>
-              </div>
-              <div className="stats-box-entries">
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">The Incredible True Story of</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Antifragility</span>
-                  <span>Antifragility in the form of</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>children story [<a target="_blank" href="https://feychou.github.io/the-incredible-true-story-of-antifragility/">link</a>]</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Chibo</span>
-                  <span>An app to test your ひらがな and</span>
-                </div>
-
-                <div className="stats-box-entry">カタカナ knowledge [
-                  <a target="_blank" href="https://feychou.github.io/chibo/">link</a>
-                ]</div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Javascript: how do I even lib?</span>
-                  <span>Slides to my</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>talk about creating and consuming libs in</span>
-                </div>
-
-                <div className="stats-box-entry">Javascript [
-                  <a target="_blank" href="https://feychou.github.io/how-do-i-lib/">link</a>
-                ]</div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Tsuki 月</span>
-                  <span>A Messenger bot that sends you</span>
-                </div>
-
-                <div className="stats-box-entry">snapshots from space [
-                  <a target="_blank" href="https://www.facebook.com/satounotsuki">link</a>
-                ]</div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Nukleus</span>
-                  <span>Collection of React UI components</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>for kununu [
-                    <a target="_blank" href="https://kununu.github.io/nukleus/">link</a>
-                  ]</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Ouija</span>
-                  <span>A gridfont editor [
-                    <a target="_blank" href="https://baphomet-berlin.github.io/ouija/">link</a>
-                  ]</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">nocker</span>
-                  <span>Dockerized Node app skeleton for</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>development and production [
-                    <a target="_blank" href="https://github.com/feychou/nocker">link</a>
-                  ]</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Brainjig</span>
-                  <span>Browser puzzle game featuring</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Jigglipuffs and Pikachus [
-                    <a target="_blank" href="http://feychou.github.io/brainjig/">link</a>
-                  ]</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="stats-box">
-              <div className="stats-box-header">
-                <span>Cyberdeck</span>
-              </div>
-              <div className="stats-box-entries">
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">TUXEDO Book XC1407 v2</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>14&quot; matt Full-HD IPS-Display</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Aluminium-Cover</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>NVIDIA Geforce GTX 1050 Ti Grafik</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>500 GB HDD (HGST/WD / 7.200 rpm / 2,5&quot;)</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>250 GB Samsung 850 EVO</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Intel Core i7 Quad-Core</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>16GB RAM</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="body-column-right">
-
-            <div className="stats-box">
-              <div className="stats-box-header">
-                <span>Skills</span>
-              </div>
-              <div className="stats-box-entries">
-                <div className="stats-box-entry">
-                  <span>Javascript  ES6  ReactJS  Redux</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Clojure ClojureScript Reagent re-frame</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Jest</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Node  Express  Webpack</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>HTML  CSS  XSLT  JSON</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>AWS  S3  Heroku</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>MySQL  DynamoDB </span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Linux  MacOS</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Git  Github  Jenkins  TravisCI</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Python Haskell</span>
-                </div>
               </div>
             </div>
 
@@ -431,15 +244,226 @@ class App extends Component {
 
             <div className="stats-box">
               <div className="stats-box-header">
+                <span>Cyberdeck</span>
+              </div>
+              <div className="stats-box-entries">
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">TUXEDO Book XC1407 v2</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>14&quot; matt Full-HD IPS-Display</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Aluminium-Cover</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>NVIDIA Geforce GTX 1050 Ti Grafik</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>500 GB HDD (HGST/WD / 7.200 rpm / 2,5&quot;)</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>250 GB Samsung 850 EVO</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Intel Core i7 Quad-Core</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>16GB RAM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="body-column-right">
+
+            <div className="stats-box">
+              <div className="stats-box-header">
+                <span>Skills</span>
+              </div>
+              <div className="stats-box-entries">
+                <div className="stats-box-entry">
+                  <span>Javascript  ES6  TypeScript</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>ReactJS  Redux</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Clojure  ClojureScript  Reagent  re-frame</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Jest  Enzyme</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Node  Express  Webpack</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>HTML  CSS  XSLT  JSON</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>AWS  S3  Heroku</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>SQL NoSQL MySQL MongoDB DynamoDB </span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Sequalize Mongoose</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Linux  MacOS</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Git  Github  Jenkins  TravisCI  Trello</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Python  Haskell</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="stats-box">
+              <div className="stats-box-header">
+                <span>Projects</span>
+              </div>
+              <div className="stats-box-entries">
+
+                <div className="stats-box-entry"> 
+                  <span className="stats-box-tag">Mr Peen</span>  
+                  <span>A dress up game starring the</span> 
+                </div>  
+
+                <div className="stats-box-entry"> 
+                  <span>chibiest character [<a target="_blank" href="https://mrpeen.github.io">link</a>]</span> 
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">The Incredible True Story of</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Antifragility</span>
+                  <span>Antifragility in the form of</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>children story [<a target="_blank" href="https://feychou.github.io/the-incredible-true-story-of-antifragility/">link</a>]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Chibo</span>
+                  <span>An app to test your ひらがな and</span>
+                </div>
+
+                <div className="stats-box-entry">カタカナ knowledge [
+                  <a target="_blank" href="https://feychou.github.io/chibo/">link</a>
+                ]</div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Javascript: how do I even lib? (video)</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Video of my React Meetup Vienna talk about</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <div>creating, packaging and consuming JS libs</div>
+                </div>
+
+                <div className="stats-box-entry">[
+                  <a target="_blank" href="https://www.youtube.com/watch?v=25om2F7ExYM">link</a>]
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Javascript: how do I even lib? (slides)</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Slides to my aforementioned talk</span> [
+                  <a target="_blank" href="https://feychou.github.io/how-do-i-lib/">link</a>
+                ]</div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Tsuki 月</span>
+                  <span>A Messenger bot that sends you</span>
+                </div>
+
+                <div className="stats-box-entry">snapshots from space [
+                  <a target="_blank" href="https://www.facebook.com/satounotsuki">link</a>
+                ]</div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Nukleus</span>
+                  <span>Collection of React UI components</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>for kununu [
+                    <a target="_blank" href="https://kununu.github.io/nukleus/">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Ouija</span>
+                  <span>A gridfont editor [
+                    <a target="_blank" href="https://baphomet-berlin.github.io/ouija/">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">nocker</span>
+                  <span>Dockerized Node app skeleton for</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>development and production [
+                    <a target="_blank" href="https://github.com/feychou/nocker">link</a>
+                  ]</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Brainjig</span>
+                  <span>Browser puzzle game featuring</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Jigglipuffs and Pikachus [
+                    <a target="_blank" href="http://feychou.github.io/brainjig/">link</a>
+                  ]</span>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="stats-box">
+              <div className="stats-box-header">
                 <span>Augmentations</span>
               </div>
               <div className="stats-box-entries">
                 <div className="stats-box-entry">
-                  <span>Neural implant for German, French, Italian</span>
+                  <span>Neural implant for <b>German</b>, <b>French</b>, <b>Italian</b></span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>and Japanese insta-translations</span>
+                  <span>and <b>Japanese</b> insta-translations</span>
                 </div>
               </div>
             </div>
@@ -454,19 +478,11 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Kawaii bandaids</span>
+                  <span>Badges and plushies</span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span>Vitamin D and sunscreen</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Pink Nintendo DS</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Obligatory Nekomimi</span>
                 </div>
 
               </div>

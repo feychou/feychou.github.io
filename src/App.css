@@ -37,12 +37,19 @@ a {
 }
 
 .App-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.App-logo {
   height: 80px;
   position: relative;
 }
 
 .App-body {
   margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo,
@@ -59,13 +66,10 @@ a {
   bottom: 9px;
 }
 
-.header-info-box {
-  float: right;
-  width: 320px;
-}
-
 .info-box-row {
-  padding-bottom: 5px;
+  display: flex;
+  border-bottom: 2px solid #444;
+  padding-top: 5px;
 }
 
 .info-box-title {
@@ -73,11 +77,9 @@ a {
   font-size: 15px;
   font-weight: bold;
   margin-right: 5px;
-  float: left;
 }
 
 .info-box-data {
-  border-bottom: 2px solid #444;
   padding-bottom: 1px;
   display: block;
 }
@@ -86,10 +88,6 @@ a {
 .body-column-right {
   display: inline-block;
   width: 350px;
-}
-
-.body-column-right {
-  float: right;
 }
 
 .stats-box {
@@ -131,28 +129,31 @@ a {
 
 @media (max-width: 775px) {
   .App-header {
+    flex-direction: column;
+  }
+
+  .Player-Info,
+  .App-logo {
     width: 355px;
     margin: auto;
   }
 
   .App-body {
-    clear: both;
+    flex-direction: column;
     width: 355px;
     margin: auto;
     padding-top: 20px;
   }
 
-  .header-info-box {
-    float: none;
-  }
-  
-  .body-column-right {
-    float: none;
-  }
-
   .body-column-right .stats-box-header {
     text-align: right;
   } 
+}
+
+@media (min-width: 775px) {
+  .App-logo {
+    min-width: 400px;
+  }
 }
 
 @media (max-width: 420px) {
@@ -164,16 +165,12 @@ a {
 
 @media (min-width: 1200px) {
   .App,
-  .App-header {
+  .App-logo {
     font-size: 16px;
   }
 
   .App {
     max-width: 950px;
-  }
-
-  .header-info-box {
-    width: 400px;
   }
 
   .logo,
