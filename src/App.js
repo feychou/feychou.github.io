@@ -402,15 +402,6 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Javascript: how do I even lib? (slides)</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Slides to my aforementioned talk</span> [
-                  <a target="_blank" href="https://feychou.github.io/how-do-i-lib/">link</a>
-                ]</div>
-
-                <div className="stats-box-entry">
                   <span className="stats-box-tag">Tsuki 月</span>
                   <span>A Messenger bot that sends you</span>
                 </div>
