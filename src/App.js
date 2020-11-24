@@ -346,25 +346,34 @@ class App extends Component {
               <div className="stats-box-entries">
 
                 <div className="stats-box-entry"> 
+                  <span className="stats-box-tag">Ice Cream Saga</span>  
+                  <span>An app featuring a popsicle </span> 
+                </div>  
+
+                <div className="stats-box-entry"> 
+                  <span> that I use to teach my students all </span> 
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>things React [<a target="_blank" href="https://github.com/feychou/ice-cream-saga">link</a>]</span>
+                </div>
+
+                <div className="stats-box-entry"> 
+                  <span className="stats-box-tag">Node Mongoose Boilerplate</span>  
+                  <span>Ditto - boi do I</span> 
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>love boilerplates! [<a target="_blank" href="https://github.com/feychou/node-mongodb-boilerplate">link</a>]</span>
+                </div>
+
+                <div className="stats-box-entry"> 
                   <span className="stats-box-tag">Mr Peen</span>  
                   <span>A dress up game starring the</span> 
                 </div>  
 
                 <div className="stats-box-entry"> 
                   <span>chibiest character [<a target="_blank" href="https://mrpeen.github.io">link</a>]</span> 
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">The Incredible True Story of</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Antifragility</span>
-                  <span>Antifragility in the form of</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>children story [<a target="_blank" href="https://feychou.github.io/the-incredible-true-story-of-antifragility/">link</a>]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -418,13 +427,6 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span>for kununu [
                     <a target="_blank" href="https://kununu.github.io/nukleus/">link</a>
-                  ]</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Ouija</span>
-                  <span>A gridfont editor [
-                    <a target="_blank" href="https://baphomet-berlin.github.io/ouija/">link</a>
                   ]</span>
                 </div>
 
