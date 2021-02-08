@@ -16,12 +16,8 @@ class App extends Component {
               <span className="info-box-data">Fey</span>
             </div>
             <div className="info-box-row">
-              <span className="info-box-title">player</span>
-              <span className="info-box-data">Federica Recanatini</span>
-            </div>
-            <div className="info-box-row">
               <span className="info-box-title">notes</span>
-              <span className="info-box-data">Wears anything that's weird enough</span>
+              <span className="info-box-data">Always wears a seifuku, looks away</span>
             </div>
           </div>
         </div>
@@ -40,12 +36,12 @@ class App extends Component {
 
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Metatype</span>
-                  <span>Twee Princess</span>
+                  <span>Software Developer</span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Primary Lifestyle</span>
-                  <span>Software Developer</span>
+                  <span>Twee Princess</span>
                 </div>
               </div>
             </div>
@@ -113,7 +109,7 @@ class App extends Component {
 
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">email</span>
-                  <span>federica.recanatini@gmail.com</span>
+                  <span>bimbapixie@gmail.com</span>
                 </div>
 
               </div>
@@ -310,27 +306,27 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>HTML  CSS  XSLT  JSON</span>
+                  <span>HTML  CSS  JSON  JWT</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>AWS  S3  Heroku</span>
+                  <span>Firebase  S3  Heroku</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>SQL NoSQL MySQL MongoDB DynamoDB </span>
+                  <span>SQL NoSQL MySQL Postgres MongoDB DynamoDB </span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Sequalize Mongoose</span>
+                  <span>Sequelize Mongoose</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Linux  MacOS</span>
+                  <span>Linux  MacOS  Git</span>
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Git  Github  Jenkins  TravisCI  Trello</span>
+                  <span>Github  GitLab  Jenkins  TravisCI  Trello  Jira</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -368,12 +364,26 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry"> 
+                  <span className="stats-box-tag">scrapyard</span>  
+                  <span>Basic JWT auth server [<a target="_blank" href="https://github.com/feychou/node-mongodb-boilerplate">link</a>]</span> 
+                </div>
+
+                <div className="stats-box-entry"> 
+                  <span className="stats-box-tag">react-auth</span>  
+                  <span>Basic React client to handle</span> 
+                </div>
+
+                <div className="stats-box-entry"> 
+                  <span>JWT auth and protected routes[<a target="_blank" href="https://github.com/feychou/node-mongodb-boilerplate">link</a>]</span> 
+                </div>
+
+                <div className="stats-box-entry"> 
                   <span className="stats-box-tag">Mr Peen</span>  
                   <span>A dress up game starring the</span> 
                 </div>  
 
                 <div className="stats-box-entry"> 
-                  <span>chibiest character [<a target="_blank" href="https://mrpeen.github.io">link</a>]</span> 
+                  <span>chibiest character [<a target="_blank" href="https://github.com/feychou/scrapyard">link</a>]</span> 
                 </div>
 
                 <div className="stats-box-entry">
@@ -402,15 +412,6 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span className="stats-box-tag">Tsuki 月</span>
-                  <span>A Messenger bot that sends you</span>
-                </div>
-
-                <div className="stats-box-entry">snapshots from space [
-                  <a target="_blank" href="https://www.facebook.com/satounotsuki">link</a>
-                ]</div>
-
-                <div className="stats-box-entry">
                   <span className="stats-box-tag">Nukleus</span>
                   <span>Collection of React UI components</span>
                 </div>
@@ -418,28 +419,6 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span>for kununu [
                     <a target="_blank" href="https://kununu.github.io/nukleus/">link</a>
-                  ]</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">nocker</span>
-                  <span>Dockerized Node app skeleton for</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>development and production [
-                    <a target="_blank" href="https://github.com/feychou/nocker">link</a>
-                  ]</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span className="stats-box-tag">Brainjig</span>
-                  <span>Browser puzzle game featuring</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Jigglipuffs and Pikachus [
-                    <a target="_blank" href="http://feychou.github.io/brainjig/">link</a>
                   ]</span>
                 </div>
               </div>
@@ -458,6 +437,10 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span>and <b>Japanese</b> insta-translations</span>
                 </div>
+
+                <div className="stats-box-entry">
+                  <span>Trained to train others</span>
+                </div>
               </div>
             </div>
 
@@ -471,11 +454,15 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>Badges and plushies</span>
+                  <span>Badges and plushies and stickers</span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span>Vitamin D and sunscreen</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>Pennyboard</span>
                 </div>
 
               </div>
