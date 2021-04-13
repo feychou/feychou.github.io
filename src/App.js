@@ -75,7 +75,7 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Goodreads</span>
                   <span>
-                    <a target="_blank" href="https://www.goodreads.com/feyfeyfey">Fey</a>
+                    <a target="_blank" href="https://www.goodreads.com/review/list/28849942?shelf=read">Fey</a>
                   </span>
                 </div>
 
@@ -103,7 +103,7 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Medium</span>
                   <span>
-                    <a target="_blank" href="https://medium.com/@fey.chu">@fey.chu</a>
+                    <a target="_blank" href="https://fey-chu.medium.com/">@fey.chu</a>
                   </span>
                 </div>
 
@@ -365,7 +365,7 @@ class App extends Component {
 
                 <div className="stats-box-entry"> 
                   <span className="stats-box-tag">scrapyard</span>  
-                  <span>Basic JWT auth server [<a target="_blank" href="https://github.com/feychou/node-mongodb-boilerplate">link</a>]</span> 
+                  <span>Basic JWT auth server [<a target="_blank" href="https://github.com/feychou/scrapyard">link</a>]</span> 
                 </div>
 
                 <div className="stats-box-entry"> 
@@ -374,7 +374,7 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry"> 
-                  <span>JWT auth and protected routes[<a target="_blank" href="https://github.com/feychou/node-mongodb-boilerplate">link</a>]</span> 
+                  <span>JWT auth and protected routes[<a target="_blank" href="https://github.com/feychou/react-auth">link</a>]</span> 
                 </div>
 
                 <div className="stats-box-entry"> 
@@ -383,7 +383,7 @@ class App extends Component {
                 </div>  
 
                 <div className="stats-box-entry"> 
-                  <span>chibiest character [<a target="_blank" href="https://github.com/feychou/scrapyard">link</a>]</span> 
+                  <span>chibiest character [<a target="_blank" href="https://mrpeen.github.io/#/">link</a>]</span> 
                 </div>
 
                 <div className="stats-box-entry">
