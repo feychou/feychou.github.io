@@ -73,6 +73,20 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
+                  <span className="stats-box-tag">Amazon Wishlist</span>
+                  <span>
+                    <a target="_blank" href="https://www.amazon.de/hz/wishlist/ls/265VUH8IAHKPC">(≧◡≦) ♡</a>
+                  </span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Vinted</span>
+                  <span>
+                    <a target="_blank" href="https://www.vinted.at/member/46677137-ashlotte">ashlotte</a>
+                  </span>
+                </div>
+
+                <div className="stats-box-entry">
                   <span className="stats-box-tag">Goodreads</span>
                   <span>
                     <a target="_blank" href="https://www.goodreads.com/review/list/28849942?shelf=read">Fey</a>
