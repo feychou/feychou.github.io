@@ -354,6 +354,26 @@ class App extends Component {
                 <span>Projects</span>
               </div>
               <div className="stats-box-entries">
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Awesome Lists!</span>
+                  <span>A collection (a list of</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>lists!) of snippets fetching lists from</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>public APIs that helps with quickly</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>reviewing implementations of search,</span>
+                </div>
+
+                <div className="stats-box-entry">
+                  <span>pagination, custom hooks etc. [<a target="_blank" href="https://github.com/feychou/awesome-lists">link</a>] [<a target="_blank" href="https://feychou.github.io/awesome-lists/">link</a>]</span>
+                </div>
 
                 <div className="stats-box-entry"> 
                   <span className="stats-box-tag">Ice Cream Saga</span>  
