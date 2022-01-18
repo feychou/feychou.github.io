@@ -385,16 +385,16 @@ class App extends Component {
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>things React [<a target="_blank" href="https://github.com/feychou/ice-cream-saga">link</a>]</span>
+                  <span>things React [<a target="_blank" href="https://github.com/feychou/ice-cream-saga">link</a>] [<a target="_blank" href="https://feychou.github.io/aisu-kurimu-dark-mode/">link</a>]</span>
                 </div>
 
                 <div className="stats-box-entry"> 
-                  <span className="stats-box-tag">Node Mongoose Boilerplate</span>  
-                  <span>Ditto - boi do I</span> 
+                  <span className="stats-box-tag">ME(R)N Boilerplate</span>  
+                  <span>Ditto - boi do I love</span> 
                 </div>
 
                 <div className="stats-box-entry">
-                  <span>love boilerplates! [<a target="_blank" href="https://github.com/feychou/node-mongodb-boilerplate">link</a>]</span>
+                  <span>boilerplates! [<a target="_blank" href="https://github.com/feychou/me-r-n-pets">link</a>]</span>
                 </div>
 
                 <div className="stats-box-entry"> 
