@@ -68,9 +68,17 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Stackoverflow</span>
                   <span>
-                    <a target="_blank" href="http://stackoverflow.com/users/story/2255082">feychou</a>
+                    <a target="_blank" href="https://stackoverflow.com/users/2255082/feychu">feychu</a>
                   </span>
                 </div>
+
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Mubi</span>
+                  <span>
+                    <a target="_blank" href="https://mubi.com/users/9938385">Fey</a>
+                  </span>
+                </div>
+
 
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Amazon Wishlist</span>
@@ -140,20 +148,20 @@ class App extends Component {
                   <span>Blockchain Basics</span>
                   <span>[
                     <a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/22878BJVAKV6">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span>Smart Contracts</span>
                   <span>[
                     <a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/8G2RWJAKYQU6">link</a>
-                  ]</span>                
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span>International Cyber Conflicts [
                     <a target="_blank" href="https://www.coursera.org/account/accomplishments/certificate/9UEBEB2SGPNW">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -174,7 +182,7 @@ class App extends Component {
                   <span> Mozilla and more </span>
                   <span> [
                     <a target="_blank" href="http://blog.deepsec.net/deepsec-2016-workshop-hacking-web-applications-case-studies-of-award-winning-bugs-in-google-yahoo-mozilla-and-more-dawid-czagan/">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -185,7 +193,7 @@ class App extends Component {
                   <span>chatbots </span>
                   <span>[
                     <a target="_blank" href="https://lemmings.io/">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -195,7 +203,7 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span>[
                     <a target="_blank" href="https://www.coursera.org/learn/cryptocurrency">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -205,24 +213,24 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span>[
                     <a target="_blank" href="https://www.coursera.org/learn/internet-history">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span>Introduction to Game Design </span>
                   <span>[
                     <a target="_blank" href="https://www.coursera.org/learn/game-design">link</a>
-                  ] </span>
+                    ] </span>
                   <span>[
                     <a target="_blank" href="http://i.imgur.com/XsPIM3P.jpg">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span>Dino 101: Dinosaur Paleobiology </span>
                   <span>[
                     <a target="_blank" href="https://www.coursera.org/learn/dino101">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -233,7 +241,7 @@ class App extends Component {
                   <span>Origin of Birds </span>
                   <span>[
                     <a target="_blank" href="https://www.coursera.org/learn/theropods-birds/">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -247,7 +255,7 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span>[
                     <a target="_blank" href="https://www.coursera.org/learn/philosophy-cognitive-sciences/">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
               </div>
             </div>
@@ -375,49 +383,49 @@ class App extends Component {
                   <span>pagination, custom hooks etc. [<a target="_blank" href="https://github.com/feychou/awesome-lists">link</a>] [<a target="_blank" href="https://feychou.github.io/awesome-lists/">link</a>]</span>
                 </div>
 
-                <div className="stats-box-entry"> 
-                  <span className="stats-box-tag">Ice Cream Saga</span>  
-                  <span>An app featuring a popsicle </span> 
-                </div>  
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Ice Cream Saga</span>
+                  <span>An app featuring a popsicle </span>
+                </div>
 
-                <div className="stats-box-entry"> 
-                  <span> that I use to teach my students all </span> 
+                <div className="stats-box-entry">
+                  <span> that I use to teach my students all </span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span>things React [<a target="_blank" href="https://github.com/feychou/ice-cream-saga">link</a>] [<a target="_blank" href="https://feychou.github.io/aisu-kurimu-dark-mode/">link</a>]</span>
                 </div>
 
-                <div className="stats-box-entry"> 
-                  <span className="stats-box-tag">ME(R)N Boilerplate</span>  
-                  <span>Ditto - boi do I love</span> 
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">ME(R)N Boilerplate</span>
+                  <span>Ditto - boi do I love</span>
                 </div>
 
                 <div className="stats-box-entry">
                   <span>boilerplates! [<a target="_blank" href="https://github.com/feychou/me-r-n-pets">link</a>]</span>
                 </div>
 
-                <div className="stats-box-entry"> 
-                  <span className="stats-box-tag">scrapyard</span>  
-                  <span>Basic JWT auth server [<a target="_blank" href="https://github.com/feychou/scrapyard">link</a>]</span> 
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">scrapyard</span>
+                  <span>Basic JWT auth server [<a target="_blank" href="https://github.com/feychou/scrapyard">link</a>]</span>
                 </div>
 
-                <div className="stats-box-entry"> 
-                  <span className="stats-box-tag">react-auth</span>  
-                  <span>Basic React client to handle</span> 
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">react-auth</span>
+                  <span>Basic React client to handle</span>
                 </div>
 
-                <div className="stats-box-entry"> 
-                  <span>JWT auth and protected routes[<a target="_blank" href="https://github.com/feychou/react-auth">link</a>]</span> 
+                <div className="stats-box-entry">
+                  <span>JWT auth and protected routes[<a target="_blank" href="https://github.com/feychou/react-auth">link</a>]</span>
                 </div>
 
-                <div className="stats-box-entry"> 
-                  <span className="stats-box-tag">Mr Peen</span>  
-                  <span>A dress up game starring the</span> 
-                </div>  
+                <div className="stats-box-entry">
+                  <span className="stats-box-tag">Mr Peen</span>
+                  <span>A dress up game starring the</span>
+                </div>
 
-                <div className="stats-box-entry"> 
-                  <span>chibiest character [<a target="_blank" href="https://mrpeen.github.io/#/">link</a>]</span> 
+                <div className="stats-box-entry">
+                  <span>chibiest character [<a target="_blank" href="https://mrpeen.github.io/#/">link</a>]</span>
                 </div>
 
                 <div className="stats-box-entry">
@@ -427,7 +435,7 @@ class App extends Component {
 
                 <div className="stats-box-entry">カタカナ knowledge [
                   <a target="_blank" href="https://feychou.github.io/chibo/">link</a>
-                ]</div>
+                  ]</div>
 
                 <div className="stats-box-entry">
                   <span className="stats-box-tag">Javascript: how do I even lib? (video)</span>
@@ -453,7 +461,7 @@ class App extends Component {
                 <div className="stats-box-entry">
                   <span>for kununu [
                     <a target="_blank" href="https://kununu.github.io/nukleus/">link</a>
-                  ]</span>
+                    ]</span>
                 </div>
               </div>
             </div>
@@ -470,10 +478,6 @@ class App extends Component {
 
                 <div className="stats-box-entry">
                   <span>and <b>Japanese</b> insta-translations</span>
-                </div>
-
-                <div className="stats-box-entry">
-                  <span>Trained to train others</span>
                 </div>
               </div>
             </div>
