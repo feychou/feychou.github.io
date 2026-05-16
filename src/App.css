@@ -1,343 +1,438 @@
 @font-face {
   font-family: ElectroShackle;
-  src: url(../public/ElectroShackle.woff);
+  src: url('/ElectroShackle.woff');
 }
 
-html, body, #root {
-  height: 100%;
+:root {
+  --bg: #05070a;
+  --panel: rgba(12, 15, 20, 0.82);
+  --panel-soft: rgba(20, 18, 26, 0.72);
+  --line: rgba(255, 95, 151, 0.58);
+  --line-soft: rgba(255, 95, 151, 0.22);
+  --pink: #ff5f97;
+  --pink-hot: #ff86b6;
+  --pink-pale: #ffd0df;
+  --text: #d3c8ce;
+  --muted: #8f858d;
+  --faint: #504950;
+  --green: #77d99a;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 50%, rgba(0, 0, 0, 0.06) 50%),
+    radial-gradient(circle at 16% 8%, rgba(255, 95, 151, 0.14), transparent 31rem),
+    var(--bg);
+  background-size: 100% 4px, auto, auto;
+  color: var(--text);
 }
 
 a {
-  text-decoration: none;
+  color: var(--pink-hot);
   cursor: pointer;
-  color: purple;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--pink-pale);
+  text-shadow: 0 0 10px rgba(255, 134, 182, 0.65);
 }
 
 .App {
-  font-family: "Courier New";
-  font-size: 12px;
-  color: #444;
-  max-width: 708px;
-  margin: auto;
-  background: linear-gradient(
-    to bottom,
-    #edeeef,
-    #edeeef 50%,
-    #f1f1f1 50%,
-    #f1f1f1
-  );
-  background-size: 100% 7px;
-  padding: 30px;
+  box-sizing: border-box;
+  width: min(100%, 1680px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 18px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  letter-spacing: 0;
 }
 
-.App:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.App-header {
+.system-strip,
+.status-footer {
   display: flex;
   justify-content: space-between;
+  gap: 18px;
+  color: var(--pink);
+  font-size: 13px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.system-strip {
+  margin-bottom: 12px;
+}
+
+.status-footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.meta-row {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.meta-row span,
+.archive-panel-header h2,
+.ghost-slot-header h2 {
+  color: var(--pink-hot);
+  font-family: ElectroShackle, "Courier New", monospace;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.meta-row strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.archive-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  gap: 18px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.portfolio-section {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.content-columns {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.content-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.archive-panel,
+.ghost-slot {
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 50%, rgba(0, 0, 0, 0.04) 50%),
+    var(--panel);
+  background-size: 100% 4px, auto;
+  box-shadow: inset 0 0 0 1px rgba(255, 134, 182, 0.05);
+}
+
+.archive-panel-header,
+.ghost-slot-header {
+  display: flex;
   align-items: center;
-}
-
-.App-logo {
-  height: 80px;
-  position: relative;
-}
-
-.App-body {
-  margin-top: 15px;
-  display: flex;
   justify-content: space-between;
+  gap: 16px;
+  min-height: 38px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--line-soft);
 }
 
-.Player-Info {
-  min-width: 48%;
+.archive-panel-header h2,
+.ghost-slot-header h2 {
+  margin: 0;
 }
 
-.logo,
-.logo-2 {
-  font-family: ElectroShackle;
-  font-size: 66px;
+.archive-panel-header span,
+.ghost-slot-header span {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
-.logo-2 {
-  height: 68px;
-  color: pink;
-  position: absolute;
-  left: 3px;
-  bottom: 9px;
+.archive-panel-body {
+  padding: 16px;
 }
 
-.info-box-row {
+.data-list {
+  display: grid;
+  gap: 8px;
+}
+
+.data-list.compact {
+  gap: 10px;
+}
+
+.data-row {
+  display: grid;
+  grid-template-columns: minmax(112px, 0.78fr) minmax(120px, 1fr);
+  gap: 14px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.data-label {
+  color: var(--text);
+  text-transform: lowercase;
+}
+
+.data-value {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.skill-cloud {
   display: flex;
-  border-bottom: 2px solid #444;
-  padding-top: 5px;
+  flex-wrap: wrap;
+  gap: 9px 0;
+  line-height: 1.6;
 }
 
-.info-box-title {
-  font-family: ElectroShackle;
-  font-size: 15px;
-  font-weight: bold;
-  margin-right: 5px;
+.skill-cloud span {
+  color: var(--text);
 }
 
-.info-box-data {
-  padding-bottom: 1px;
-  display: block;
+.skill-cloud span:not(:last-child)::after {
+  content: "•";
+  margin: 0 10px;
+  color: var(--pink);
 }
 
-.body-column-left,
-.body-column-right {
-  display: inline-block;
-  width: 350px;
+.project-list {
+  display: grid;
+  gap: 9px;
 }
 
-.stats-box {
-  margin-bottom: 20px;
+.project-row {
+  display: grid;
+  grid-template-columns: minmax(138px, 0.45fr) minmax(190px, 1fr) auto;
+  gap: 14px;
+  align-items: baseline;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 95, 151, 0.13);
 }
 
-.body-column-left .stats-box-header {
-  text-align: right;
+.project-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
-.stats-box-header span {
-  background-color: pink;
-  padding: 2px 10px;
-  font-family: ElectroShackle;
-  font-size: 15px;
-  font-weight: bold;
+.project-row h3,
+.project-row p {
+  margin: 0;
+  font-size: 14px;
 }
 
-.stats-box-entry {
-  border-bottom: 1px solid #444;
-  margin-bottom: 4px;
+.project-row h3 {
+  color: var(--pink-pale);
 }
 
-.stats-box-entry-empty {
-  height: 12px;
+.project-row p {
+  color: var(--muted);
 }
 
-.stats-box-tag {
-  font-weight: bold;
-  margin-right: 10px;
+.project-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  white-space: nowrap;
 }
 
-.stats-box-entries {
-  border-top: 2px solid pink;
-  border-left: 2px solid pink;
-  border-right: 2px solid pink;
-  padding: 10px 20px;
+.link-list,
+.plain-list {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-@media (max-width: 775px) {
-  .App-header {
+.link-list li,
+.plain-list li {
+  display: flex;
+  gap: 14px;
+  color: var(--text);
+}
+
+.link-list li::before,
+.plain-list li::before {
+  content: ">";
+  color: var(--pink);
+}
+
+.link-list li span,
+.plain-list li {
+  flex: 1;
+}
+
+.ghost-slot {
+  display: flex;
+  flex-direction: column;
+  min-height: 760px;
+}
+
+.ghost-stage {
+  position: relative;
+  flex: 1;
+  min-height: 460px;
+  margin: 16px;
+  border: 1px solid var(--line-soft);
+  background:
+    linear-gradient(90deg, transparent 24%, rgba(255, 95, 151, 0.07) 25%, transparent 26%),
+    linear-gradient(180deg, rgba(255, 95, 151, 0.06), transparent 24%, transparent 76%, rgba(255, 95, 151, 0.06)),
+    var(--panel-soft);
+  overflow: hidden;
+}
+
+.ghost-stage::before,
+.ghost-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 72%;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 22px rgba(255, 95, 151, 0.22);
+}
+
+.ghost-stage::before {
+  top: 26px;
+}
+
+.ghost-stage::after {
+  bottom: 26px;
+}
+
+.ghost-stage-rings {
+  position: absolute;
+  inset: 54px 16%;
+  border-right: 1px solid var(--line-soft);
+  border-left: 1px solid var(--line-soft);
+}
+
+.ghost-placeholder {
+  position: absolute;
+  inset: 118px 52px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed rgba(255, 95, 151, 0.35);
+  color: var(--faint);
+  text-align: center;
+}
+
+.ghost-placeholder span {
+  max-width: 15ch;
+  color: rgba(255, 208, 223, 0.38);
+  font-size: 12px;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.ghost-terminal {
+  margin: 0 16px 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--line-soft);
+  color: var(--muted);
+  background: rgba(5, 7, 10, 0.72);
+}
+
+.ghost-terminal p {
+  margin: 0 0 7px;
+}
+
+.ghost-terminal p:last-child {
+  margin-bottom: 0;
+  color: var(--pink);
+}
+
+@media (min-width: 1280px) {
+  .App {
+    padding: 22px 28px;
+  }
+
+  .archive-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .archive-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .content-columns {
     flex-direction: column;
   }
 
-  .Player-Info,
-  .App-logo {
-    width: 355px;
-    margin: auto;
+  .ghost-slot {
+    min-height: auto;
   }
 
-  .App-body {
+  .ghost-stage {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 720px) {
+  .App {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .system-strip,
+  .status-footer,
+  .archive-panel-header,
+  .ghost-slot-header,
+  .project-row,
+  .link-list li,
+  .plain-list li {
+    align-items: flex-start;
     flex-direction: column;
-    width: 355px;
-    margin: auto;
-    padding-top: 20px;
   }
 
-  .body-column-right .stats-box-header {
-    text-align: right;
-  } 
-}
-
-@media (min-width: 775px) {
-  .App-logo {
-    min-width: 400px;
-  }
-}
-
-@media (max-width: 420px) {
-  .App {
-    padding: 30px 0;
-  }
-}
-
-
-@media (min-width: 1200px) {
-  .App,
-  .App-logo {
-    font-size: 16px;
+  .system-strip,
+  .status-footer {
+    gap: 4px;
   }
 
-  .App {
-    max-width: 950px;
+  .meta-row,
+  .data-row,
+  .project-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
-  .logo,
-  .logo-2 {
-    font-size: 75px;
+  .archive-panel-body,
+  .archive-panel-header,
+  .ghost-slot-header {
+    padding-right: 12px;
+    padding-left: 12px;
   }
 
-  .body-column-left,
-  .body-column-right {
-    width: 460px;
+  .project-links {
+    justify-content: flex-start;
   }
-}
 
-@keyframes noise-anim {
-  0% {
-    clip: rect(83px, 9999px, 78px, 0);
+  .ghost-stage {
+    min-height: 360px;
+    margin: 12px;
   }
-  5% {
-    clip: rect(12px, 9999px, 5px, 0);
-  }
-  10% {
-    clip: rect(71px, 9999px, 83px, 0);
-  }
-  15% {
-    clip: rect(46px, 9999px, 85px, 0);
-  }
-  20% {
-    clip: rect(11px, 9999px, 2px, 0);
-  }
-  25% {
-    clip: rect(68px, 9999px, 66px, 0);
-  }
-  30% {
-    clip: rect(22px, 9999px, 71px, 0);
-  }
-  35% {
-    clip: rect(87px, 9999px, 50px, 0);
-  }
-  40% {
-    clip: rect(2px, 9999px, 87px, 0);
-  }
-  45% {
-    clip: rect(63px, 9999px, 39px, 0);
-  }
-  50% {
-    clip: rect(25px, 9999px, 30px, 0);
-  }
-  55% {
-    clip: rect(18px, 9999px, 72px, 0);
-  }
-  60% {
-    clip: rect(73px, 9999px, 85px, 0);
-  }
-  65% {
-    clip: rect(76px, 9999px, 15px, 0);
-  }
-  70% {
-    clip: rect(32px, 9999px, 23px, 0);
-  }
-  75% {
-    clip: rect(44px, 9999px, 40px, 0);
-  }
-  80% {
-    clip: rect(89px, 9999px, 88px, 0);
-  }
-  85% {
-    clip: rect(61px, 9999px, 17px, 0);
-  }
-  90% {
-    clip: rect(89px, 9999px, 22px, 0);
-  }
-  95% {
-    clip: rect(67px, 9999px, 61px, 0);
-  }
-  100% {
-    clip: rect(93px, 9999px, 49px, 0);
-  }
-}
-.logo:after {
-  content: "Real Life";
-  position: absolute;
-  left: 2px;
-  text-shadow: -1px 0 5px #ff69b4;
-  top: 0;
-  overflow: hidden;
-  clip: rect(0, 900px, 0, 0);
-  animation: noise-anim 2s infinite linear alternate-reverse;
-}
 
-@keyframes noise-anim-2 {
-  0% {
-    clip: rect(29px, 9999px, 60px, 0);
+  .ghost-placeholder {
+    inset: 96px 34px;
   }
-  5% {
-    clip: rect(90px, 9999px, 28px, 0);
-  }
-  10% {
-    clip: rect(72px, 9999px, 65px, 0);
-  }
-  15% {
-    clip: rect(62px, 9999px, 57px, 0);
-  }
-  20% {
-    clip: rect(87px, 9999px, 13px, 0);
-  }
-  25% {
-    clip: rect(32px, 9999px, 18px, 0);
-  }
-  30% {
-    clip: rect(17px, 9999px, 95px, 0);
-  }
-  35% {
-    clip: rect(52px, 9999px, 72px, 0);
-  }
-  40% {
-    clip: rect(75px, 9999px, 91px, 0);
-  }
-  45% {
-    clip: rect(24px, 9999px, 83px, 0);
-  }
-  50% {
-    clip: rect(72px, 9999px, 68px, 0);
-  }
-  55% {
-    clip: rect(84px, 9999px, 92px, 0);
-  }
-  60% {
-    clip: rect(97px, 9999px, 54px, 0);
-  }
-  65% {
-    clip: rect(14px, 9999px, 57px, 0);
-  }
-  70% {
-    clip: rect(50px, 9999px, 80px, 0);
-  }
-  75% {
-    clip: rect(94px, 9999px, 64px, 0);
-  }
-  80% {
-    clip: rect(15px, 9999px, 86px, 0);
-  }
-  85% {
-    clip: rect(5px, 9999px, 93px, 0);
-  }
-  90% {
-    clip: rect(83px, 9999px, 70px, 0);
-  }
-  95% {
-    clip: rect(67px, 9999px, 98px, 0);
-  }
-  100% {
-    clip: rect(90px, 9999px, 45px, 0);
-  }
-}
-
-.logo:before {
-  content: "Real Life";
-  position: absolute;
-  left: -2px;
-  text-shadow: 1px 0 3px #32cd32;
-  top: 0;
-  overflow: hidden;
-  clip: rect(0, 900px, 0, 0);
-  animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
