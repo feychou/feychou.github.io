@@ -101,12 +101,38 @@ function ExternalLink(props) {
   );
 }
 
+function ArchivePanelIcon(props) {
+  const title = (props.title || '').toLowerCase();
+  let icon = '/assets/icons/module.svg';
+
+  if (title.includes('contacts')) {
+    icon = '/assets/icons/contacts.svg';
+  } else if (title.includes('protocols')) {
+    icon = '/assets/icons/protocols.svg';
+  } else if (title.includes('adaptation')) {
+    icon = '/assets/icons/adaptation.svg';
+  } else if (title.includes('upkeep')) {
+    icon = '/assets/icons/upkeep.svg';
+  } else if (title.includes('artifact')) {
+    icon = '/assets/icons/artifact.svg';
+  }
+
+  return (
+    <svg viewBox="0 0 28 28" aria-hidden="true" className="archive-panel-icon">
+      <use href={`${icon}#icon`} />
+    </svg>
+  );
+}
+
 function ArchivePanel(props) {
   return (
-    <section className={'archive-panel ' + (props.className || '')}>
+    <section className={'archive-panel ' + (props.className || '')} data-archive-code={props.code}>
       <header className="archive-panel-header">
         <h2>{props.title}</h2>
-        {props.code && <span>{props.code}</span>}
+        <div className="archive-panel-mark">
+          {props.code && <span>{props.code}</span>}
+          <ArchivePanelIcon title={props.title} />
+        </div>
       </header>
       <div className="archive-panel-body">{props.children}</div>
     </section>
@@ -192,29 +218,29 @@ class App extends Component {
           <section className="portfolio-section">
             <div className="content-columns">
               <div className="content-column">
-                <ArchivePanel title="IDS / Contacts" code="002">
+                <ArchivePanel title="IDS / Contacts">
                   <ContactList />
                 </ArchivePanel>
 
-                <ArchivePanel title="Core Protocols" code="003" className="wide-panel">
+                <ArchivePanel title="Core Protocols" className="wide-panel">
                   <SkillCloud />
                 </ArchivePanel>
 
-                <ArchivePanel title="Neural Adaptation Layers" code="004" className="wide-panel">
+                <ArchivePanel title="Neural Adaptation Layers" className="wide-panel">
                   <SimpleList items={layers} />
                 </ArchivePanel>
 
-                <ArchivePanel title="Vessel Upkeep" code="007" className="wide-panel">
+                <ArchivePanel title="Vessel Upkeep" className="wide-panel">
                   <SimpleList items={upkeep} />
                 </ArchivePanel>
               </div>
 
               <div className="content-column">
-                <ArchivePanel title="Artifact Log" code="005" className="wide-panel">
+                <ArchivePanel title="Artifact Log" className="wide-panel">
                   <ProjectList />
                 </ArchivePanel>
 
-                <ArchivePanel title="Installed Modules" code="006" className="wide-panel">
+                <ArchivePanel title="Installed Modules" className="wide-panel">
                   <LinkList items={abilities} />
                 </ArchivePanel>
               

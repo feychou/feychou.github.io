@@ -129,7 +129,47 @@ a:focus {
   gap: 18px;
 }
 
-.archive-panel,
+.archive-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 50%, rgba(0, 0, 0, 0.04) 50%),
+    var(--panel);
+  background-size: 100% 4px, auto;
+  box-shadow:
+    0 0 0 1px rgba(255, 134, 182, 0.04),
+    inset 0 0 0 1px rgba(255, 134, 182, 0.04);
+}
+
+.archive-panel::before,
+.archive-panel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.archive-panel::before {
+  border-radius: inherit;
+  padding: 1px;
+  background:
+    radial-gradient(circle at 9px 7px, rgba(255, 208, 223, 0.72) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 83% 14px, rgba(255, 95, 151, 0.5) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 34% 100%, rgba(255, 134, 182, 0.42) 0 1px, transparent 1.8px),
+    repeating-linear-gradient(97deg, rgba(255, 95, 151, 0.42) 0 1px, transparent 1px 9px);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.62;
+}
+
+.archive-panel::after {
+  display: none;
+}
+
 .ghost-slot {
   border: 1px solid var(--line);
   background:
@@ -147,12 +187,104 @@ a:focus {
   gap: 16px;
   min-height: 38px;
   padding: 0 16px;
-  border-bottom: 1px solid var(--line-soft);
+}
+
+.archive-panel-header {
+  position: relative;
+  min-height: 42px;
+  padding: 0 18px;
+  border-bottom: 0;
+  overflow: hidden;
+  --divider-a: 10px;
+  --divider-b: 18px;
+  --divider-c: 28%;
+  --divider-d: 67%;
+  --divider-offset: 0px;
+  --divider-opacity: 0.58;
+  background: rgba(5, 7, 10, 0.24);
+}
+
+.archive-panel-header::before {
+  display: none;
+}
+
+.archive-panel-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 12px 0 12px;
+  height: 4px;
+  background:
+    linear-gradient(90deg, rgba(255, 95, 151, 0.38), rgba(255, 208, 223, 0.24) 42%, rgba(255, 95, 151, 0.34)) var(--divider-offset) 1px / 100% 2px no-repeat,
+    radial-gradient(circle at var(--divider-c) 1px, rgba(255, 208, 223, 0.24) 0 1px, transparent 1.35px),
+    radial-gradient(circle at var(--divider-d) 3px, rgba(255, 95, 151, 0.2) 0 1px, transparent 1.35px);
+  -webkit-mask-image: linear-gradient(90deg, #000 0 calc(var(--divider-c) - 5%), rgba(0, 0, 0, 0.72) calc(var(--divider-c) - 3%) calc(var(--divider-c) + 4%), #000 calc(var(--divider-c) + 6%) calc(var(--divider-d) - 4%), rgba(0, 0, 0, 0.78) calc(var(--divider-d) - 2%) calc(var(--divider-d) + 3%), #000 calc(var(--divider-d) + 5%) 100%);
+  mask-image: linear-gradient(90deg, #000 0 calc(var(--divider-c) - 5%), rgba(0, 0, 0, 0.72) calc(var(--divider-c) - 3%) calc(var(--divider-c) + 4%), #000 calc(var(--divider-c) + 6%) calc(var(--divider-d) - 4%), rgba(0, 0, 0, 0.78) calc(var(--divider-d) - 2%) calc(var(--divider-d) + 3%), #000 calc(var(--divider-d) + 5%) 100%);
+  opacity: var(--divider-opacity);
+}
+
+.archive-panel[data-archive-code="002"] .archive-panel-header {
+  --divider-a: 8px;
+  --divider-b: 19px;
+  --divider-c: 24%;
+  --divider-d: 73%;
+  --divider-offset: 3px;
+  --divider-opacity: 0.54;
+}
+
+.archive-panel[data-archive-code="003"] .archive-panel-header {
+  --divider-a: 13px;
+  --divider-b: 24px;
+  --divider-c: 39%;
+  --divider-d: 64%;
+  --divider-offset: -7px;
+  --divider-opacity: 0.52;
+}
+
+.archive-panel[data-archive-code="004"] .archive-panel-header {
+  --divider-a: 6px;
+  --divider-b: 16px;
+  --divider-c: 31%;
+  --divider-d: 57%;
+  --divider-offset: 11px;
+  --divider-opacity: 0.56;
+}
+
+.archive-panel[data-archive-code="005"] .archive-panel-header {
+  --divider-a: 15px;
+  --divider-b: 29px;
+  --divider-c: 36%;
+  --divider-d: 78%;
+  --divider-offset: -12px;
+  --divider-opacity: 0.54;
+}
+
+.archive-panel[data-archive-code="006"] .archive-panel-header {
+  --divider-a: 9px;
+  --divider-b: 21px;
+  --divider-c: 27%;
+  --divider-d: 69%;
+  --divider-offset: 6px;
+  --divider-opacity: 0.5;
+}
+
+.archive-panel[data-archive-code="007"] .archive-panel-header {
+  --divider-a: 12px;
+  --divider-b: 27px;
+  --divider-c: 43%;
+  --divider-d: 75%;
+  --divider-offset: -3px;
+  --divider-opacity: 0.54;
 }
 
 .archive-panel-header h2,
 .ghost-slot-header h2 {
   margin: 0;
+}
+
+.archive-panel-header h2,
+.archive-panel-mark {
+  position: relative;
+  z-index: 1;
 }
 
 .archive-panel-header span,
@@ -162,8 +294,34 @@ a:focus {
   text-transform: uppercase;
 }
 
+.archive-panel-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.archive-panel-mark svg {
+  width: 27px;
+  height: 27px;
+  color: rgba(255, 134, 182, 0.78);
+  flex: 0 0 auto;
+}
+
+.archive-panel-mark svg path,
+.archive-panel-mark svg circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.35;
+}
+
 .archive-panel-body {
-  padding: 16px;
+  position: relative;
+  z-index: 1;
+  padding: clamp(15px, 1.6vw, 18px);
 }
 
 .data-list {
@@ -421,6 +579,22 @@ a:focus {
   .ghost-slot-header {
     padding-right: 12px;
     padding-left: 12px;
+  }
+
+  .archive-panel-header {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .archive-panel-header h2 {
+    min-width: 0;
+    font-size: 16px;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .archive-panel-mark {
+    flex: 0 0 auto;
   }
 
   .project-links {

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon" viewBox="0 0 28 28" fill="none" stroke="#ff86b6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35">
+    <path d="M6 8h16v15H6z" />
+    <path d="M9 5h10l3 3H6zM10 13h8M10 17h6" />
+    <path d="M21 14l3 2-3 2" />
+  </symbol>
+</svg>
