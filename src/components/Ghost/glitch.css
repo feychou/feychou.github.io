@@ -7,6 +7,7 @@
   --glitch-scan-duration: 10.2s;
   --glitch-pulse-duration: 11.2s;
   --glitch-stutter-duration: 9.4s;
+  --ghost-breath-duration: 9.8s;
 }
 
 .ghost-stage::before,
@@ -56,6 +57,12 @@
     ghost-chamber-stutter var(--glitch-stutter-duration) steps(1, end) infinite;
 }
 
+.ghost-figure-image {
+  transform-origin: 50% 58%;
+  will-change: filter, transform;
+  animation: ghost-figure-breathe var(--ghost-breath-duration) ease-in-out infinite;
+}
+
 @keyframes ghost-chamber-pulse {
   0%,
   100% {
@@ -78,6 +85,34 @@
 
   48% {
     opacity: 0.84;
+  }
+}
+
+@keyframes ghost-figure-breathe {
+  0%,
+  100% {
+    transform: translate(-50%, calc(-50% + 2px)) scale(0.998);
+    filter:
+      drop-shadow(0 0 11px rgba(255, 95, 151, 0.24))
+      drop-shadow(0 0 26px rgba(255, 134, 182, 0.12));
+  }
+
+  38% {
+    transform: translate(-50%, calc(-50% - 8px)) scale(1.002);
+    filter:
+      drop-shadow(0 0 15px rgba(255, 95, 151, 0.32))
+      drop-shadow(0 0 34px rgba(255, 134, 182, 0.18));
+  }
+
+  56% {
+    transform: translate(-50%, calc(-50% - 9px)) scale(1.002);
+    filter:
+      drop-shadow(0 0 15px rgba(255, 95, 151, 0.32))
+      drop-shadow(0 0 34px rgba(255, 134, 182, 0.18));
+  }
+
+  82% {
+    transform: translate(-50%, calc(-50% + 1px)) scale(0.999);
   }
 }
 
@@ -214,6 +249,7 @@
 @media (prefers-reduced-motion: reduce) {
   .ghost-stage::before,
   .ghost-stage::after,
+  .ghost-figure-image,
   .ghost-chamber-image {
     animation: none;
   }
