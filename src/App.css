@@ -419,9 +419,15 @@ a:focus {
 
 .link-list li,
 .plain-list li {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 14px;
+  align-items: baseline;
   color: var(--text);
+}
+
+.link-list li {
+  grid-template-columns: auto minmax(0, 1fr) auto;
 }
 
 .link-list li::before,
@@ -432,7 +438,12 @@ a:focus {
 
 .link-list li span,
 .plain-list li {
-  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.link-list li a {
+  white-space: nowrap;
 }
 
 .ghost-slot {
@@ -576,9 +587,7 @@ a:focus {
   .status-footer,
   .archive-panel-header,
   .ghost-slot-header,
-  .project-row,
-  .link-list li,
-  .plain-list li {
+  .project-row {
     align-items: flex-start;
     flex-direction: column;
   }
