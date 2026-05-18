@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon" viewBox="0 0 28 28" fill="none" stroke="#ff86b6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35">
+    <path d="M7 14h14M14 7v14" />
+    <circle cx="14" cy="14" r="4" />
+    <circle cx="7" cy="14" r="2" />
+    <circle cx="21" cy="14" r="2" />
+    <circle cx="14" cy="7" r="2" />
+    <circle cx="14" cy="21" r="2" />
+  </symbol>
+</svg>
