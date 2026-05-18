@@ -1,0 +1,89 @@
+.ghost-slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 760px;
+  overflow: hidden;
+}
+
+.ghost-body {
+  position: relative;
+}
+
+.ghost-stage {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 720px;
+  overflow: hidden;
+}
+
+.ghost-chamber-image,
+.ghost-figure-image {
+  position: absolute;
+  left: 50%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.ghost-chamber-image {
+  top: 50%;
+  z-index: 2;
+  width: auto;
+  height: 97%;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  opacity: 0.78;
+}
+
+.ghost-figure-image {
+  top: 54%;
+  z-index: 1;
+  height: 82%;
+  width: auto;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  filter:
+    drop-shadow(0 0 12px rgba(255, 95, 151, 0.28))
+    drop-shadow(0 0 28px rgba(255, 134, 182, 0.14));
+}
+
+.ghost-initialize {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  gap: 14px;
+  width: min(calc(100% - 32px), 250px);
+  min-height: 44px;
+  border: 1px solid rgba(255, 95, 151, 0.78);
+  border-radius: 7px;
+  color: var(--pink-hot);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 50%, rgba(0, 0, 0, 0.04) 50%),
+    rgba(5, 7, 10, 0.8);
+  background-size: 100% 4px, auto;
+  cursor: default;
+  font-family: ElectroShackle, "Courier New", monospace;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-size: 18px;
+  transform: translate(-50%, -50%);
+}
+
+.ghost-lock-icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  .ghost-stage {
+    height: clamp(600px, 172vw, 680px);
+  }
+}
