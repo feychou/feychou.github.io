@@ -138,7 +138,7 @@ a:focus {
 
 .data-row {
   display: grid;
-  grid-template-columns: minmax(112px, 0.78fr) minmax(120px, 1fr);
+  grid-template-columns: minmax(8ch, 0.78fr) minmax(0, 1fr);
   gap: 14px;
   align-items: baseline;
   min-width: 0;
@@ -146,6 +146,7 @@ a:focus {
 
 .data-label {
   color: var(--text);
+  min-width: 0;
   text-transform: lowercase;
 }
 
@@ -319,10 +320,13 @@ a:focus {
     gap: 4px;
   }
 
-  .meta-row,
-  .data-row {
+  .meta-row {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .data-row {
+    gap: 10px;
   }
 
   .project-list {

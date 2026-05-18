@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
   <symbol id="icon" viewBox="0 0 28 28" fill="none" stroke="#ff86b6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35">
     <path d="M11 4h6l1.5 5 4.5 2.8-1.8 5.7L14 24l-7.2-6.5L5 11.8 9.5 9z" />
     <path d="M10 15h8M14 11v8" />
   </symbol>
+  <use href="#icon" />
 </svg>
