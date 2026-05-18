@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 760px;
   overflow: hidden;
 }
 

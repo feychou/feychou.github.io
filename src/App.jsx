@@ -200,6 +200,8 @@ class App extends Component {
         </div>
 
         <main className="archive-layout">
+          <Ghost />
+
           <section className="portfolio-section">
             <div className="content-columns">
               <div className="content-column">
@@ -233,8 +235,6 @@ class App extends Component {
               </div>
             </div>
           </section>
-
-          <Ghost />
         </main>
 
         <footer className="status-footer">

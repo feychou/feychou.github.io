@@ -102,7 +102,7 @@ a:focus {
 
 .archive-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  grid-template-columns: minmax(320px, 430px) minmax(0, 1fr);
   gap: 18px;
   align-items: start;
   margin-top: 12px;
@@ -267,13 +267,13 @@ a:focus {
   }
 
   .archive-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
+    grid-template-columns: minmax(360px, 520px) minmax(0, 1fr);
   }
 }
 
 @media (min-width: 960px) and (max-width: 1359px) {
   .archive-layout {
-    grid-template-columns: minmax(0, 1fr) clamp(360px, 34vw, 420px);
+    grid-template-columns: clamp(360px, 34vw, 420px) minmax(0, 1fr);
   }
 
   .content-columns {
