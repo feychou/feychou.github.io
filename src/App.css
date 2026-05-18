@@ -178,12 +178,14 @@ a:focus {
 
 .project-list {
   display: grid;
+  grid-template-columns: minmax(138px, 0.45fr) minmax(190px, 1fr) auto;
   gap: 9px;
 }
 
 .project-row {
   display: grid;
-  grid-template-columns: minmax(138px, 0.45fr) minmax(190px, 1fr) auto;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   gap: 14px;
   align-items: baseline;
   padding-bottom: 8px;
@@ -203,10 +205,14 @@ a:focus {
 
 .project-row h3 {
   color: var(--pink-pale);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .project-row p {
   color: var(--muted);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .project-links {
@@ -314,13 +320,20 @@ a:focus {
   }
 
   .meta-row,
-  .data-row,
-  .project-row {
+  .data-row {
     grid-template-columns: 1fr;
     gap: 4px;
   }
 
+  .project-list {
+    grid-template-columns: minmax(10ch, 12ch) minmax(0, 1fr) auto;
+  }
+
+  .project-row {
+    gap: 8px;
+  }
+
   .project-links {
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 }
