@@ -1,4 +1,5 @@
 import './index.css';
+import './glitch.css';
 
 function Ghost() {
   return (
