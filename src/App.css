@@ -517,7 +517,7 @@ a:focus {
   color: var(--pink);
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
   .App {
     padding: 22px 28px;
   }
@@ -527,13 +527,34 @@ a:focus {
   }
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 960px) and (max-width: 1359px) {
+  .archive-layout {
+    grid-template-columns: minmax(0, 1fr) clamp(360px, 34vw, 420px);
+  }
+
+  .content-columns {
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .content-column {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 959px) {
   .archive-layout {
     grid-template-columns: 1fr;
   }
 
   .content-columns {
     flex-direction: column;
+  }
+
+  .content-column {
+    width: 100%;
   }
 
   .ghost-slot {
