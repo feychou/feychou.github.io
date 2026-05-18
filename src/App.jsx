@@ -12,9 +12,16 @@ const contacts = [
 ];
 
 const skills = [
-  'REST APIs', 'Typescript', 'CD/CI', 'Python',
-  'Agentic AI', 'Information Security', 'SCRUM', 'Observability', 'React',
-  'Service Architecture'
+  {
+    key: 'human-assisted-development',
+    parts: [
+      { text: 'AI', strike: true },
+      { text: 'Human-assisted Development' },
+    ],
+  },
+  'Typescript', 'CD/CI', 'Python',
+  'Agentic AI', 'Information Security', 'SCRUM',
+  'Observability', 'Next.js', 'Service Architecture'
 ]
 
 const layers = [
@@ -161,7 +168,21 @@ function ContactList() {
 function SkillCloud() {
   return (
     <div className="skill-cloud">
-      {skills.map((skill) => <span key={skill}>{skill}</span>)}
+      {skills.map((skill) => {
+        if (typeof skill === 'string') {
+          return <span key={skill}>{skill}</span>;
+        }
+
+        return (
+          <span key={skill.key}>
+            {skill.parts.map((part) => (
+              part.strike
+                ? <s key={part.text}>{part.text}</s>
+                : <React.Fragment key={part.text}>{part.text}</React.Fragment>
+            ))}
+          </span>
+        );
+      })}
     </div>
   );
 }
@@ -250,10 +271,6 @@ class App extends Component {
           </section>
 
           <aside className="ghost-slot">
-            <div className="ghost-slot-header">
-              <h2>Ghost Chamber</h2>
-              <span>SHELF-17 // EMPTY</span>
-            </div>
             <div className="ghost-stage" aria-label="Reserved ghost chamber space">
               <div className="ghost-stage-rings" />
               <div className="ghost-placeholder">

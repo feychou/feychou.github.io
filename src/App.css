@@ -88,8 +88,7 @@ a:focus {
 }
 
 .meta-row span,
-.archive-panel-header h2,
-.ghost-slot-header h2 {
+.archive-panel-header h2 {
   color: var(--pink-hot);
   font-family: ElectroShackle, "Courier New", monospace;
   font-size: 18px;
@@ -360,6 +359,11 @@ a:focus {
 
 .skill-cloud span {
   color: var(--text);
+}
+
+.skill-cloud s {
+  text-decoration-color: var(--pink);
+  text-decoration-thickness: 2px;
 }
 
 .skill-cloud span:not(:last-child)::after {
