@@ -19,17 +19,35 @@
   --ghost-chamber-height: 97%;
   --ghost-chamber-opacity: 0.78;
   --ghost-chamber-glow-opacity: 0;
-  --ghost-figure-height: 82%;
+  --ghost-figure-shell-height: 82%;
+  --ghost-dormant-figure-opacity: 1;
+  --ghost-awake-figure-opacity: 0;
+  --ghost-dormant-figure-filter:
+    drop-shadow(0 0 12px rgba(255, 95, 151, 0.28))
+    drop-shadow(0 0 28px rgba(255, 134, 182, 0.14));
+  --ghost-awake-figure-filter:
+    blur(2px)
+    saturate(1.18)
+    drop-shadow(0 0 12px rgba(255, 95, 151, 0.24))
+    drop-shadow(0 0 28px rgba(255, 134, 182, 0.14));
 }
 
 .ghost-slot[data-ghost-state="awake"] .ghost-stage {
   --ghost-chamber-glow-opacity: 0.64;
-  --ghost-figure-height: 78%;
+  --ghost-dormant-figure-opacity: 0;
+  --ghost-awake-figure-opacity: 1;
+  --ghost-dormant-figure-filter:
+    blur(1.6px)
+    saturate(0.78)
+    drop-shadow(0 0 8px rgba(255, 95, 151, 0.16));
+  --ghost-awake-figure-filter:
+    drop-shadow(0 0 14px rgba(255, 95, 151, 0.32))
+    drop-shadow(0 0 34px rgba(255, 134, 182, 0.2));
 }
 
 .ghost-chamber-image,
 .ghost-chamber-glow-image,
-.ghost-figure-image {
+.ghost-figure-shell {
   position: absolute;
   left: 50%;
   user-select: none;
@@ -58,18 +76,41 @@
   filter:
     drop-shadow(0 0 16px rgba(255, 95, 151, 0.3))
     drop-shadow(0 0 34px rgba(255, 134, 182, 0.18));
+  transition: opacity 1100ms ease, filter 1200ms ease;
+}
+
+.ghost-figure-shell {
+  top: 54%;
+  z-index: 1;
+  width: 100%;
+  height: var(--ghost-figure-shell-height);
+  transform: translate(-50%, -50%);
 }
 
 .ghost-figure-image {
-  top: 54%;
-  z-index: 1;
-  height: var(--ghost-figure-height);
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: auto;
+  height: 100%;
   max-width: none;
   transform: translate(-50%, -50%);
-  filter:
-    drop-shadow(0 0 12px rgba(255, 95, 151, 0.28))
-    drop-shadow(0 0 28px rgba(255, 134, 182, 0.14));
+  transition: opacity 950ms ease, filter 950ms ease;
+  will-change: opacity, filter;
+}
+
+.ghost-figure-image-dormant {
+  z-index: 1;
+  opacity: var(--ghost-dormant-figure-opacity);
+  filter: var(--ghost-dormant-figure-filter);
+}
+
+.ghost-figure-image-awake {
+  z-index: 2;
+  height: 95.2%;
+  opacity: var(--ghost-awake-figure-opacity);
+  filter: var(--ghost-awake-figure-filter);
+  transition-delay: 140ms;
 }
 
 .ghost-initialize {

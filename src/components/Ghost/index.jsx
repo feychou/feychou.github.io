@@ -4,13 +4,11 @@ import './glitch.css';
 
 const ghostStates = {
   dormant: {
-    figure: '/assets/ghost/ghost-dormant.png',
     label: 'Dormant ghost container',
     stageLabel: 'Dormant ghost chamber',
     figureAlt: 'Dormant ghost suspended in the container',
   },
   awake: {
-    figure: '/assets/ghost/ghost-awake.png',
     label: 'Awake ghost container',
     stageLabel: 'Awake ghost chamber',
     figureAlt: 'Awake ghost suspended in the container',
@@ -51,11 +49,20 @@ function Ghost() {
             alt=""
             aria-hidden="true"
           />
-          <img
-            className="ghost-figure-image"
-            src={currentGhost.figure}
-            alt={currentGhost.figureAlt}
-          />
+          <div className="ghost-figure-shell" role="img" aria-label={currentGhost.figureAlt}>
+            <img
+              className="ghost-figure-image ghost-figure-image-dormant"
+              src="/assets/ghost/ghost-dormant.png"
+              alt=""
+              aria-hidden="true"
+            />
+            <img
+              className="ghost-figure-image ghost-figure-image-awake"
+              src="/assets/ghost/ghost-awake.png"
+              alt=""
+              aria-hidden="true"
+            />
+          </div>
         </div>
       </div>
     </aside>

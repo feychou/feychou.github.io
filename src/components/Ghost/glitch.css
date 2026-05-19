@@ -58,13 +58,13 @@
     ghost-chamber-stutter var(--glitch-stutter-duration) steps(1, end) infinite;
 }
 
-.ghost-figure-image {
+.ghost-figure-shell {
   transform-origin: 50% 58%;
   will-change: filter, transform;
   animation: ghost-figure-breathe var(--ghost-breath-duration) ease-in-out infinite;
 }
 
-.ghost-slot[data-ghost-state="awake"] .ghost-figure-image {
+.ghost-slot[data-ghost-state="awake"] .ghost-figure-shell {
   animation-duration: var(--ghost-awake-breath-duration);
 }
 
@@ -254,10 +254,15 @@
 @media (prefers-reduced-motion: reduce) {
   .ghost-stage::before,
   .ghost-stage::after,
-  .ghost-slot[data-ghost-state="awake"] .ghost-figure-image,
-  .ghost-figure-image,
+  .ghost-slot[data-ghost-state="awake"] .ghost-figure-shell,
+  .ghost-figure-shell,
   .ghost-chamber-image {
     animation: none;
+  }
+
+  .ghost-chamber-glow-image,
+  .ghost-figure-image {
+    transition: none;
   }
 
   .ghost-stage::before,
