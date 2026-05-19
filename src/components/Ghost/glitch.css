@@ -1,6 +1,5 @@
 .ghost-stage {
   isolation: isolate;
-  --chamber-height: 97%;
   --glitch-cyan: rgba(48, 238, 255, 0.48);
   --glitch-magenta: rgba(255, 64, 151, 0.52);
   --glitch-rift-duration: 7.2s;
@@ -8,6 +7,8 @@
   --glitch-pulse-duration: 11.2s;
   --glitch-stutter-duration: 9.4s;
   --ghost-breath-duration: 9.8s;
+  --ghost-awake-breath-duration: 7.2s;
+  --ghost-chamber-image: url('/assets/ghost/chamber-dormant.png');
 }
 
 .ghost-stage::before,
@@ -31,10 +32,10 @@
 
 .ghost-stage::after {
   z-index: 3;
-  background-image: url('/assets/ghost/chamber-dormant.png');
+  background-image: var(--ghost-chamber-image);
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: auto var(--chamber-height);
+  background-position: 50% var(--ghost-chamber-top);
+  background-size: auto var(--ghost-chamber-height);
   filter:
     drop-shadow(-9px 0 0 var(--glitch-cyan))
     drop-shadow(9px 0 0 var(--glitch-magenta))
@@ -61,6 +62,10 @@
   transform-origin: 50% 58%;
   will-change: filter, transform;
   animation: ghost-figure-breathe var(--ghost-breath-duration) ease-in-out infinite;
+}
+
+.ghost-slot[data-ghost-state="awake"] .ghost-figure-image {
+  animation-duration: var(--ghost-awake-breath-duration);
 }
 
 @keyframes ghost-chamber-pulse {
@@ -249,6 +254,7 @@
 @media (prefers-reduced-motion: reduce) {
   .ghost-stage::before,
   .ghost-stage::after,
+  .ghost-slot[data-ghost-state="awake"] .ghost-figure-image,
   .ghost-figure-image,
   .ghost-chamber-image {
     animation: none;

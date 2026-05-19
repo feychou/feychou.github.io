@@ -15,9 +15,20 @@
   min-width: 0;
   height: 720px;
   overflow: hidden;
+  --ghost-chamber-top: 50%;
+  --ghost-chamber-height: 97%;
+  --ghost-chamber-opacity: 0.78;
+  --ghost-chamber-glow-opacity: 0;
+  --ghost-figure-height: 82%;
+}
+
+.ghost-slot[data-ghost-state="awake"] .ghost-stage {
+  --ghost-chamber-glow-opacity: 0.64;
+  --ghost-figure-height: 78%;
 }
 
 .ghost-chamber-image,
+.ghost-chamber-glow-image,
 .ghost-figure-image {
   position: absolute;
   left: 50%;
@@ -26,19 +37,33 @@
 }
 
 .ghost-chamber-image {
-  top: 50%;
+  top: var(--ghost-chamber-top);
   z-index: 2;
   width: auto;
-  height: 97%;
+  height: var(--ghost-chamber-height);
   max-width: none;
   transform: translate(-50%, -50%);
-  opacity: 0.78;
+  opacity: var(--ghost-chamber-opacity);
+}
+
+.ghost-chamber-glow-image {
+  top: var(--ghost-chamber-top);
+  z-index: 3;
+  width: auto;
+  height: var(--ghost-chamber-height);
+  max-width: none;
+  transform: translate(-50%, -50%);
+  opacity: var(--ghost-chamber-glow-opacity);
+  mix-blend-mode: screen;
+  filter:
+    drop-shadow(0 0 16px rgba(255, 95, 151, 0.3))
+    drop-shadow(0 0 34px rgba(255, 134, 182, 0.18));
 }
 
 .ghost-figure-image {
   top: 54%;
   z-index: 1;
-  height: 82%;
+  height: var(--ghost-figure-height);
   width: auto;
   max-width: none;
   transform: translate(-50%, -50%);
@@ -66,7 +91,7 @@
     linear-gradient(rgba(255, 255, 255, 0.018) 50%, rgba(0, 0, 0, 0.04) 50%),
     rgba(5, 7, 10, 0.8);
   background-size: 100% 4px, auto;
-  cursor: default;
+  cursor: pointer;
   font-family: ElectroShackle, "Courier New", monospace;
   font-weight: 700;
   letter-spacing: 0;
