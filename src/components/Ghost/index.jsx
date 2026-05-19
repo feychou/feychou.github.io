@@ -19,6 +19,8 @@ function Ghost() {
   const [ghostState, setGhostState] = useState('dormant');
   const isAwake = ghostState === 'awake';
   const currentGhost = ghostStates[ghostState];
+  const buttonLabel = isAwake ? 'SUSPEND GHOST' : 'INITIALIZE GHOST';
+  const buttonIcon = isAwake ? 'unlock' : 'lock';
 
   return (
     <aside className="ghost-slot" data-ghost-state={ghostState} aria-label={currentGhost.label}>
@@ -26,13 +28,13 @@ function Ghost() {
         <button
           className="ghost-initialize"
           type="button"
-          aria-label={isAwake ? 'Ghost initialized' : 'Initialize ghost'}
+          aria-label={isAwake ? 'Close ghost session' : 'Initialize ghost'}
           aria-pressed={isAwake}
-          onClick={() => setGhostState('awake')}
+          onClick={() => setGhostState(isAwake ? 'dormant' : 'awake')}
         >
-          <span>&gt; INITIALIZE GHOST</span>
+          <span>&gt; {buttonLabel}</span>
           <svg className="ghost-lock-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <use href="/assets/icons/lock.svg#icon" />
+            <use href={`/assets/icons/${buttonIcon}.svg#icon`} />
           </svg>
         </button>
 

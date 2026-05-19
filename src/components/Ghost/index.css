@@ -139,6 +139,23 @@
   text-transform: uppercase;
   font-size: 18px;
   transform: translate(-50%, -50%);
+  transition:
+    border-color 320ms ease,
+    color 320ms ease,
+    background-color 320ms ease,
+    box-shadow 320ms ease;
+}
+
+.ghost-slot[data-ghost-state="awake"] .ghost-initialize {
+  border-color: rgba(255, 208, 223, 0.82);
+  color: var(--pink-pale);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.026) 50%, rgba(0, 0, 0, 0.03) 50%),
+    rgba(18, 8, 14, 0.74);
+  background-size: 100% 4px, auto;
+  box-shadow:
+    0 0 18px rgba(255, 95, 151, 0.18),
+    inset 0 0 18px rgba(255, 134, 182, 0.08);
 }
 
 .ghost-lock-icon {
