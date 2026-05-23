@@ -1,7 +1,24 @@
-import React, { Component } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import ArchivePanel from './components/ArchivePanel';
 import Ghost from './components/Ghost';
 import './App.css';
+
+type ExternalLinkTuple = [label: string, href: string];
+type Contact = [label: string, value: string, href?: string];
+type SkillPart = {
+  text: string;
+  strike?: boolean;
+};
+type StructuredSkill = {
+  key: string;
+  parts: SkillPart[];
+};
+type Skill = string | StructuredSkill;
+type Project = {
+  name: string;
+  description: string;
+  links: ExternalLinkTuple[];
+};
 
 const contacts = [
   ['github', 'feychou', 'https://github.com/feychou'],
@@ -11,7 +28,7 @@ const contacts = [
   ['coursera', 'alisa', 'https://www.coursera.org/user/91390a08d1d625f59a626ac7070a6fd3'],
   ['duolingo', 'fey.chu', 'https://www.duolingo.com/profile/fey.chu'],
   ['instagram', 'fey.chu', 'https://www.instagram.com/fey.chu/']
-];
+] satisfies Contact[];
 
 const skills = [
   {
@@ -24,7 +41,7 @@ const skills = [
   'Typescript', 'CD/CI', 'Python',
   'Agentic AI', 'Information Security', 'SCRUM',
   'Observability', 'Next.js', 'Service Architecture'
-]
+] satisfies Skill[];
 
 const layers = [
   'Multi-language translation implants [German / Japanese / French / Italian]',
@@ -32,7 +49,7 @@ const layers = [
   'Magickal curiosity reinforcement',
   'Epistemically cautious model-updating reasoning patterns',
   'Persistent anomaly investigation tendency'
-]
+];
 
 const projects = [
   {
@@ -78,7 +95,7 @@ const projects = [
     description: 'UI component library for kununu',
     links: [['link', 'https://kununu.github.io/nukleus/']],
   },
-];
+] satisfies Project[];
 
 const abilities = [
   ['Generative AI with LLMs', 'https://www.coursera.org/account/accomplishments/verify/C384RUYAJJ2P'],
@@ -93,19 +110,24 @@ const abilities = [
   ['Dino 101: Dinosaur Paleobiology', 'https://www.coursera.org/learn/dino101'],
   ['Paleontology: Theropod Dinosaurs and the Origin of Birds', 'https://www.coursera.org/learn/theropods-birds/'],
   ['Philosophy and the Sciences: Cognitive Sciences', 'https://www.coursera.org/learn/philosophy-cognitive-sciences/'],
-];
+] satisfies ExternalLinkTuple[];
 
 const upkeep = [
   'Musculoskeletal reinforcement cycles',
   'Dermal preservation regimen',
   'UV shielding dependency',
   'Circadian stabilization supplements'
-]
+];
 
-function ExternalLink(props) {
+type ExternalLinkProps = {
+  href: string;
+  children: ReactNode;
+};
+
+function ExternalLink({ href, children }: ExternalLinkProps) {
   return (
-    <a target="_blank" rel="noopener noreferrer" href={props.href}>
-      {props.children}
+    <a target="_blank" rel="noopener noreferrer" href={href}>
+      {children}
     </a>
   );
 }
@@ -142,7 +164,7 @@ function SkillCloud() {
             {skill.parts.map((part) => (
               part.strike
                 ? <s key={part.text}>{part.text}</s>
-                : <React.Fragment key={part.text}>{part.text}</React.Fragment>
+                : <Fragment key={part.text}>{part.text}</Fragment>
             ))}
           </span>
         );
@@ -171,10 +193,14 @@ function ProjectList() {
   );
 }
 
-function LinkList(props) {
+type LinkListProps = {
+  items: ExternalLinkTuple[];
+};
+
+function LinkList({ items }: LinkListProps) {
   return (
     <ul className="link-list">
-      {props.items.map((item) => (
+      {items.map((item) => (
         <li key={item[0]}>
           <span>{item[0]}</span>
           <ExternalLink href={item[1]}>[link]</ExternalLink>
@@ -184,67 +210,67 @@ function LinkList(props) {
   );
 }
 
-function SimpleList(props) {
+type SimpleListProps = {
+  items: string[];
+};
+
+function SimpleList({ items }: SimpleListProps) {
   return (
-    <ul className="plain-list">{props.items.map((item) => <li key={item}>{item}</li>)}</ul>
-  )
+    <ul className="plain-list">{items.map((item) => <li key={item}>{item}</li>)}</ul>
+  );
 }
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="system-strip">
-          <span>FEY_ARCHIVE_SYSTEM v0.8.0</span>
-          <span>ACTIVE ARCHIVE</span>
-        </div>
-
-        <main className="archive-layout">
-          <Ghost />
-
-          <section className="portfolio-section">
-            <div className="content-columns">
-              <div className="content-column">
-                <ArchivePanel title="IDS / Contacts">
-                  <ContactList />
-                </ArchivePanel>
-
-                <ArchivePanel title="Core Protocols" className="wide-panel">
-                  <SkillCloud />
-                </ArchivePanel>
-
-                <ArchivePanel title="Neural Adaptation Layers" className="wide-panel">
-                  <SimpleList items={layers} />
-                </ArchivePanel>
-
-                <ArchivePanel title="Vessel Upkeep" className="wide-panel">
-                  <SimpleList items={upkeep} />
-                </ArchivePanel>
-              </div>
-
-              <div className="content-column">
-                <ArchivePanel title="Artifact Log" className="wide-panel">
-                  <ProjectList />
-                </ArchivePanel>
-
-                <ArchivePanel title="Installed Modules" className="wide-panel">
-                  <LinkList items={abilities} />
-                </ArchivePanel>
-              
-
-              </div>
-            </div>
-          </section>
-        </main>
-
-        <footer className="status-footer">
-          <span>SYS: ARCHIVE NODE_17</span>
-          <span>ARCHIVE INTEGRITY 100%</span>
-          <span>ENCRYPTION: ACTIVE</span>
-        </footer>
+function App() {
+  return (
+    <div className="App">
+      <div className="system-strip">
+        <span>FEY_ARCHIVE_SYSTEM v0.8.0</span>
+        <span>ACTIVE ARCHIVE</span>
       </div>
-    );
-  }
+
+      <main className="archive-layout">
+        <Ghost />
+
+        <section className="portfolio-section">
+          <div className="content-columns">
+            <div className="content-column">
+              <ArchivePanel title="IDS / Contacts">
+                <ContactList />
+              </ArchivePanel>
+
+              <ArchivePanel title="Core Protocols" className="wide-panel">
+                <SkillCloud />
+              </ArchivePanel>
+
+              <ArchivePanel title="Neural Adaptation Layers" className="wide-panel">
+                <SimpleList items={layers} />
+              </ArchivePanel>
+
+              <ArchivePanel title="Vessel Upkeep" className="wide-panel">
+                <SimpleList items={upkeep} />
+              </ArchivePanel>
+            </div>
+
+            <div className="content-column">
+              <ArchivePanel title="Artifact Log" className="wide-panel">
+                <ProjectList />
+              </ArchivePanel>
+
+              <ArchivePanel title="Installed Modules" className="wide-panel">
+                <LinkList items={abilities} />
+              </ArchivePanel>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="status-footer">
+        <span>SYS: ARCHIVE NODE_17</span>
+        <span>ARCHIVE INTEGRITY 100%</span>
+        <span>ENCRYPTION: ACTIVE</span>
+      </footer>
+    </div>
+  );
 }
 
 export default App;
