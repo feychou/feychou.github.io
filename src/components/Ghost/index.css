@@ -1,16 +1,6 @@
-.ghost-slot {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.ghost-body {
-  position: relative;
-}
-
 .ghost-stage {
   position: relative;
+  z-index: 3;
   width: 100%;
   min-width: 0;
   height: 720px;
@@ -30,6 +20,9 @@
     saturate(1.18)
     drop-shadow(0 0 12px rgba(255, 95, 151, 0.24))
     drop-shadow(0 0 28px rgba(255, 134, 182, 0.14));
+  transition:
+    opacity 560ms ease,
+    filter 560ms ease;
 }
 
 .ghost-slot[data-ghost-state="awake"] .ghost-stage {
@@ -138,6 +131,7 @@
   letter-spacing: 0;
   text-transform: uppercase;
   font-size: 18px;
+  outline: 0;
   transform: translate(-50%, -50%);
   transition:
     border-color 320ms ease,
@@ -146,15 +140,13 @@
     box-shadow 320ms ease;
 }
 
-.ghost-slot[data-ghost-state="awake"] .ghost-initialize {
-  border-color: rgba(255, 208, 223, 0.82);
+.ghost-initialize:hover,
+.ghost-initialize:focus-visible {
+  border-color: rgba(255, 208, 223, 0.92);
   color: var(--pink-pale);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.026) 50%, rgba(0, 0, 0, 0.03) 50%),
-    rgba(18, 8, 14, 0.74);
-  background-size: 100% 4px, auto;
   box-shadow:
-    0 0 18px rgba(255, 95, 151, 0.18),
+    0 0 0 1px rgba(255, 208, 223, 0.16),
+    0 0 16px rgba(255, 95, 151, 0.2),
     inset 0 0 18px rgba(255, 134, 182, 0.08);
 }
 
@@ -162,6 +154,20 @@
   width: 22px;
   height: 22px;
   flex: 0 0 auto;
+}
+
+@media (max-width: 959px) {
+  .ghost-slot[data-ghost-state="awake"] .ghost-stage {
+    opacity: 0.52;
+    filter:
+      blur(0.24px)
+      saturate(1.24)
+      brightness(1.12)
+      drop-shadow(0 0 26px rgba(255, 95, 151, 0.28));
+    mix-blend-mode: screen;
+    --ghost-chamber-opacity: 0.2;
+    --ghost-chamber-glow-opacity: 0.32;
+  }
 }
 
 @media (max-width: 480px) {

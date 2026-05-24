@@ -1,0 +1,24 @@
+.ghost-slot {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: visible;
+}
+
+.ghost-body {
+  position: relative;
+  min-height: 720px;
+  isolation: isolate;
+}
+
+@media (max-width: 959px) {
+  .ghost-slot[data-ghost-state="awake"] {
+    min-height: clamp(610px, 88vh, 760px);
+  }
+
+  .ghost-slot[data-ghost-state="awake"] .ghost-body {
+    min-height: clamp(610px, 88vh, 760px);
+  }
+}

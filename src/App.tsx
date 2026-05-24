@@ -1,6 +1,6 @@
-import { Fragment, type ReactNode } from 'react';
+import { Fragment, useState, type ReactNode } from 'react';
 import ArchivePanel from './components/ArchivePanel';
-import Ghost from './components/Ghost';
+import GhostChannel from './components/GhostChannel';
 import './App.css';
 
 type ExternalLinkTuple = [label: string, href: string];
@@ -221,6 +221,21 @@ function SimpleList({ items }: SimpleListProps) {
 }
 
 function App() {
+  const [isGhostAwake, setIsGhostAwake] = useState(false);
+  const ghostState = isGhostAwake ? 'awake' : 'dormant';
+  const toggleGhostAwake = () => {
+    const scrollLeft = window.scrollX;
+    const scrollTop = window.scrollY;
+    const restoreScroll = () => window.scrollTo(scrollLeft, scrollTop);
+
+    setIsGhostAwake((currentIsAwake) => !currentIsAwake);
+    window.requestAnimationFrame(() => {
+      restoreScroll();
+      window.requestAnimationFrame(restoreScroll);
+    });
+    window.setTimeout(restoreScroll, 120);
+  };
+
   return (
     <div className="App">
       <div className="system-strip">
@@ -228,8 +243,11 @@ function App() {
         <span>ACTIVE ARCHIVE</span>
       </div>
 
-      <main className="archive-layout">
-        <Ghost />
+      <main className="archive-layout" data-ghost-state={ghostState}>
+        <GhostChannel
+          isAwake={isGhostAwake}
+          onToggleAwake={toggleGhostAwake}
+        />
 
         <section className="portfolio-section">
           <div className="content-columns">
