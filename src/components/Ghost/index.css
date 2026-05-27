@@ -107,15 +107,13 @@
 }
 
 .ghost-initialize {
+  --ghost-action-gap: 14px;
+  --ghost-action-icon-size: 22px;
   position: absolute;
   top: 72%;
   left: 50%;
   z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   align-self: center;
-  gap: 14px;
   width: min(calc(100% - 32px), 250px);
   min-height: 44px;
   border: 1px solid rgba(255, 95, 151, 0.78);
@@ -129,7 +127,6 @@
   font-family: ElectroShackle, "Courier New", monospace;
   font-weight: 700;
   letter-spacing: 0;
-  text-transform: uppercase;
   font-size: 18px;
   outline: 0;
   transform: translate(-50%, -50%);

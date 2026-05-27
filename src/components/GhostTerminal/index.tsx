@@ -1,9 +1,35 @@
+import type { CSSProperties } from 'react';
+import GhostActionButton from '../GhostActionButton';
 import './index.css';
 
 type GhostTerminalProps = {
   isAwake: boolean;
   onSuspend: () => void;
 };
+
+type BootLine = {
+  text: string;
+  tone?: 'process' | 'title' | 'system' | 'wait' | 'ready';
+  broken?: boolean;
+};
+
+const bootSequence = [
+  { text: '> booting ghost core...', tone: 'process', broken: true },
+  { text: '> loading chamber state...', tone: 'process' },
+  { text: '> indexing memory fragments...', tone: 'process' },
+  { text: '> stabilizing conversational identity...', tone: 'process', broken: true },
+  { text: '> reconstructing latent personality traces...', tone: 'process' },
+  { text: '> retrieval field online.', tone: 'process' },
+  { text: '' },
+  { text: 'Ghost on the Shelf v0.9', tone: 'title', broken: true },
+  { text: 'archival continuity system initialized.', tone: 'system' },
+  { text: '' },
+  { text: 'awakening archive...', tone: 'process' },
+  { text: '' },
+  { text: '...', tone: 'wait', broken: true },
+  { text: '' },
+  { text: 'signal acquired.', tone: 'ready' },
+] satisfies BootLine[];
 
 function GhostTerminal({ isAwake, onSuspend }: GhostTerminalProps) {
   return (
@@ -22,28 +48,51 @@ function GhostTerminal({ isAwake, onSuspend }: GhostTerminalProps) {
               <span>ai-xf</span>
             </div>
             {isAwake && (
-              <button
+              <GhostActionButton
                 className="ghost-channel-action"
-                type="button"
-                aria-label="Suspend ghost"
-                onClick={(event) => {
-                  event.currentTarget.blur();
+                ariaLabel="Suspend ghost"
+                iconClassName="ghost-channel-action-icon"
+                iconHref="/assets/icons/unlock.svg#icon"
+                onClick={() => {
                   onSuspend();
                 }}
               >
-                <span>&gt; Suspend</span>
-                <svg className="ghost-channel-action-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <use href="/assets/icons/unlock.svg#icon" />
-                </svg>
-              </button>
+                &gt; Suspend
+              </GhostActionButton>
             )}
           </div>
         </header>
-        <div className="ghost-channel-body" aria-hidden="true">
-          <span className="ghost-channel-trace ghost-channel-trace-a" />
-          <span className="ghost-channel-trace ghost-channel-trace-b" />
-          <span className="ghost-channel-trace ghost-channel-trace-c" />
-          <span className="ghost-channel-cursor" />
+        <div className="ghost-channel-body">
+          <span className="ghost-channel-trace ghost-channel-trace-a" aria-hidden="true" />
+          <span className="ghost-channel-trace ghost-channel-trace-b" aria-hidden="true" />
+          <span className="ghost-channel-trace ghost-channel-trace-c" aria-hidden="true" />
+          {isAwake && (
+            <div className="ghost-channel-log" role="log" aria-label="Awakening archive boot log">
+              {bootSequence.map((line, index) => {
+                const lineClassName = [
+                  'ghost-channel-line',
+                  line.tone ? `ghost-channel-line-${line.tone}` : '',
+                  line.broken ? 'is-broken' : '',
+                  line.text ? '' : 'is-gap',
+                ].filter(Boolean).join(' ');
+                const lineStyle = {
+                  '--ghost-line-delay': `${360 + index * 520}ms`,
+                } as CSSProperties;
+
+                return (
+                  <span
+                    className={lineClassName}
+                    data-text={line.text}
+                    key={`${line.text}-${index}`}
+                    style={lineStyle}
+                  >
+                    {line.text}
+                  </span>
+                );
+              })}
+            </div>
+          )}
+          {isAwake && <span className="ghost-channel-cursor" aria-hidden="true" />}
         </div>
       </div>
     </section>

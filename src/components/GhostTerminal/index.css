@@ -97,7 +97,6 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 1.1;
-  text-transform: uppercase;
 }
 
 .ghost-channel-tools {
@@ -132,13 +131,11 @@
 }
 
 .ghost-channel-action {
+  --ghost-action-gap: 8px;
+  --ghost-action-icon-size: 17px;
   position: relative;
   z-index: 5;
-  display: flex;
   flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   min-height: 30px;
   padding: 0 10px;
   border: 1px solid rgba(255, 95, 151, 0.64);
@@ -155,7 +152,6 @@
   letter-spacing: 0;
   line-height: 1;
   outline: 0;
-  text-transform: uppercase;
   transition:
     border-color 260ms ease,
     color 260ms ease,
@@ -183,6 +179,7 @@
   position: relative;
   z-index: 2;
   min-height: calc(clamp(470px, 62vh, 640px) - 46px);
+  overflow: hidden;
   background:
     linear-gradient(90deg, rgba(255, 95, 151, 0.12), transparent 1px) 28px 0 / 1px 100% no-repeat,
     linear-gradient(180deg, rgba(255, 95, 151, 0.1), transparent 1px) 0 42px / 100% 1px no-repeat,
@@ -238,6 +235,91 @@
   top: 66%;
   width: 42%;
   animation-delay: -5.1s;
+}
+
+.ghost-channel-log {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: start;
+  gap: 3px;
+  max-width: min(100%, 680px);
+  padding: clamp(24px, 3.2vw, 36px) clamp(20px, 3vw, 36px);
+  color: rgba(255, 208, 223, 0.88);
+  font-family: "Courier New", monospace;
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.24;
+  text-shadow:
+    0 0 8px rgba(255, 95, 151, 0.26),
+    1px 0 0 rgba(119, 217, 154, 0.08);
+}
+
+.ghost-channel-line {
+  position: relative;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  opacity: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  animation: ghost-terminal-line-in 420ms steps(2, end) forwards;
+  animation-delay: var(--ghost-line-delay);
+}
+
+.ghost-channel-line::selection {
+  color: var(--bg);
+  background: var(--pink-pale);
+}
+
+.ghost-channel-line.is-gap {
+  min-height: 0.22em;
+  animation-duration: 1ms;
+}
+
+.ghost-channel-line-process {
+  color: rgba(255, 208, 223, 0.9);
+}
+
+.ghost-channel-line-title {
+  margin-top: 2px;
+  color: var(--pink-hot);
+  font-family: ElectroShackle, "Courier New", monospace;
+  font-size: clamp(16px, 1.45vw, 21px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-shadow:
+    0 0 12px rgba(255, 134, 182, 0.46),
+    1px 0 0 rgba(119, 217, 154, 0.16);
+}
+
+.ghost-channel-line-system {
+  color: rgba(255, 208, 223, 0.76);
+}
+
+.ghost-channel-line-wait {
+  color: rgba(255, 208, 223, 0.58);
+}
+
+.ghost-channel-line-ready {
+  color: var(--pink-pale);
+  font-weight: 700;
+  text-shadow:
+    0 0 11px rgba(255, 134, 182, 0.42),
+    1px 0 0 rgba(255, 95, 151, 0.2);
+}
+
+.ghost-channel-line.is-broken::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  color: rgba(119, 217, 154, 0.62);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(1px);
+  clip-path: inset(0 0 58% 0);
+  animation: ghost-terminal-line-break 2.7s steps(1, end) both;
+  animation-delay: calc(var(--ghost-line-delay) + 80ms);
 }
 
 .ghost-channel-cursor {
@@ -326,6 +408,61 @@
   }
 }
 
+@keyframes ghost-terminal-line-in {
+  0% {
+    opacity: 0;
+    filter: blur(0.7px);
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  18% {
+    opacity: 0.86;
+    transform: translate3d(1px, 0, 0);
+  }
+
+  27% {
+    opacity: 0.42;
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  46% {
+    opacity: 1;
+    filter: blur(0.2px);
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ghost-terminal-line-break {
+  0%,
+  13%,
+  27%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  7% {
+    opacity: 0.58;
+    transform: translateX(2px);
+  }
+
+  18% {
+    opacity: 0.28;
+    transform: translateX(-1px);
+  }
+
+  23% {
+    opacity: 0.5;
+    transform: translateX(1px);
+  }
+}
+
 @keyframes ghost-terminal-cursor {
   0%,
   54% {
@@ -360,6 +497,11 @@
 
   .ghost-slot[data-ghost-state="awake"] .ghost-channel-body {
     min-height: calc(clamp(540px, 78vh, 690px) - 46px);
+  }
+
+  .ghost-slot[data-ghost-state="awake"] .ghost-channel-log {
+    max-width: 100%;
+    padding-top: clamp(26px, 6vw, 36px);
   }
 }
 

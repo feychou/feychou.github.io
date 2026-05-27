@@ -1,0 +1,17 @@
+button.ghost-action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ghost-action-gap);
+}
+
+button.ghost-action-button .ghost-action-label {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+button.ghost-action-button .ghost-action-icon {
+  width: var(--ghost-action-icon-size);
+  height: var(--ghost-action-icon-size);
+  flex: 0 0 auto;
+}

@@ -1,3 +1,4 @@
+import GhostActionButton from '../GhostActionButton';
 import './index.css';
 import './glitch.css';
 
@@ -24,21 +25,18 @@ function Ghost({ isAwake, onToggleAwake }: GhostProps) {
   return (
     <>
       {!isAwake && (
-        <button
+        <GhostActionButton
           className="ghost-initialize"
-          type="button"
-          aria-label="Initialize ghost"
-          aria-pressed="false"
-          onClick={(event) => {
-            event.currentTarget.blur();
+          ariaLabel="initialize ghost"
+          ariaPressed={false}
+          iconClassName="ghost-lock-icon"
+          iconHref="/assets/icons/lock.svg#icon"
+          onClick={() => {
             onToggleAwake();
           }}
         >
-          <span>&gt; INITIALIZE GHOST</span>
-          <svg className="ghost-lock-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <use href="/assets/icons/lock.svg#icon" />
-          </svg>
-        </button>
+          &gt; initialize ghost
+        </GhostActionButton>
       )}
 
       <div className="ghost-stage" aria-label={currentGhost.stageLabel}>
