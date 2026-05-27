@@ -4,6 +4,8 @@ const DEFAULT_GHOST_API_BASE_URL = 'http://127.0.0.1:8000';
 
 type JsonObject = Record<string, unknown>;
 
+let ghostAccessToken: string | undefined;
+
 export type GhostHealth = components['schemas']['HealthResponse'];
 export type GhostAccessRequest = components['schemas']['AccessRequest'];
 export type GhostAccessResponse = components['schemas']['AccessResponse'];
@@ -13,12 +15,17 @@ export type GhostChatResponse = components['schemas']['ChatResponse'];
 export type GhostRetrievedFragment = components['schemas']['RetrievedFragmentModel'];
 
 export type GhostApiOptions = {
+  accessToken?: string;
   baseUrl?: string;
   fetcher?: typeof fetch;
   signal?: AbortSignal;
 };
 
-export type GhostApiErrorCode = 'http_error' | 'invalid_json' | 'network_error';
+export type GhostApiErrorCode =
+  | 'access_token_missing'
+  | 'http_error'
+  | 'invalid_json'
+  | 'network_error';
 
 export class GhostApiError extends Error {
   readonly code: GhostApiErrorCode;
@@ -57,20 +64,44 @@ export async function unlockGhost(
   code: GhostAccessRequest['code'],
   options?: GhostApiOptions,
 ): Promise<GhostAccessResponse> {
-  return requestJson('/v1/access', { body: { code }, method: 'POST' }, options);
+  const response = await requestJson<GhostAccessResponse, GhostAccessRequest>(
+    '/v1/access',
+    { body: { code }, method: 'POST' },
+    options,
+  );
+
+  setGhostAccessToken(response.access_token);
+
+  return response;
 }
 
 export async function checkGhostAwakening(
   options?: GhostApiOptions,
 ): Promise<GhostAwakeningResponse> {
-  return requestJson('/v1/awakening', { method: 'POST' }, options);
+  return requestJson('/v1/awakening', { method: 'POST', requiresAccessToken: true }, options);
 }
 
 export async function sendGhostMessage(
   request: GhostChatRequest,
   options?: GhostApiOptions,
 ): Promise<GhostChatResponse> {
-  return requestJson('/v1/chat', { body: request, method: 'POST' }, options);
+  return requestJson(
+    '/v1/chat',
+    { body: request, method: 'POST', requiresAccessToken: true },
+    options,
+  );
+}
+
+export function setGhostAccessToken(accessToken: string | undefined): void {
+  ghostAccessToken = accessToken?.trim() || undefined;
+}
+
+export function getGhostAccessToken(): string | undefined {
+  return ghostAccessToken;
+}
+
+export function clearGhostAccessToken(): void {
+  ghostAccessToken = undefined;
 }
 
 function ghostApiBaseUrl(baseUrl = import.meta.env.VITE_GHOST_API_BASE_URL): string {
@@ -82,6 +113,7 @@ async function requestJson<ResponseBody, RequestBody = never>(
   request: {
     body?: RequestBody;
     method: 'GET' | 'POST';
+    requiresAccessToken?: boolean;
   },
   options: GhostApiOptions = {},
 ): Promise<ResponseBody> {
@@ -92,12 +124,24 @@ async function requestJson<ResponseBody, RequestBody = never>(
     headers.set('Content-Type', 'application/json');
   }
 
+  if (request.requiresAccessToken) {
+    const accessToken = (options.accessToken ?? ghostAccessToken)?.trim();
+
+    if (!accessToken) {
+      throw new GhostApiError('Ghost access token is missing.', {
+        code: 'access_token_missing',
+      });
+    }
+
+    headers.set('Authorization', `Bearer ${accessToken}`);
+  }
+
   let response: Response;
 
   try {
     response = await fetcher(buildGhostApiUrl(path, options.baseUrl), {
       body: request.body === undefined ? undefined : JSON.stringify(request.body),
-      credentials: 'include',
+      credentials: 'omit',
       headers,
       method: request.method,
       signal: options.signal,
@@ -114,6 +158,10 @@ async function requestJson<ResponseBody, RequestBody = never>(
 
   if (!response.ok) {
     const detail = extractFastApiDetail(body);
+
+    if (response.status === 401 && request.requiresAccessToken && options.accessToken === undefined) {
+      clearGhostAccessToken();
+    }
 
     throw new GhostApiError(buildHttpErrorMessage(response.status, detail), {
       body,

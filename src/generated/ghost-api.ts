@@ -88,19 +88,29 @@ export interface components {
         AccessResponse: {
             /** Access Granted */
             access_granted: boolean;
+            /** Access Token */
+            access_token: string;
+            /**
+             * Token Type
+             * @default bearer
+             * @constant
+             */
+            token_type: "bearer";
+            /** Expires In */
+            expires_in: number;
         };
         /** AwakeningResponse */
         AwakeningResponse: {
-            /** Archive Loaded */
-            archive_loaded: boolean;
             /** Can Awaken */
             can_awaken: boolean;
-            /** Message */
-            message: string;
-            /** Openai Ready */
-            openai_ready: boolean;
             /** Reason */
             reason?: ("archive_unavailable" | "openai_unconfigured" | "openai_unavailable") | null;
+            /** Message */
+            message: string;
+            /** Archive Loaded */
+            archive_loaded: boolean;
+            /** Openai Ready */
+            openai_ready: boolean;
         };
         /**
          * ChatRequest
@@ -112,11 +122,6 @@ export interface components {
          */
         ChatRequest: {
             /**
-             * K
-             * @description Optional number of memory fragments to retrieve.
-             */
-            k?: number | null;
-            /**
              * Message
              * @description The user's current message.
              */
@@ -126,15 +131,20 @@ export interface components {
              * @description Client-held rolling summary for continuity and contextual memory retrieval in this chat thread.
              */
             session_summary?: string | null;
+            /**
+             * K
+             * @description Optional number of memory fragments to retrieve.
+             */
+            k?: number | null;
         };
         /** ChatResponse */
         ChatResponse: {
             /** Reply */
             reply: string;
-            /** Retrieved */
-            retrieved: components["schemas"]["RetrievedFragmentModel"][];
             /** Session Summary */
             session_summary: string;
+            /** Retrieved */
+            retrieved: components["schemas"]["RetrievedFragmentModel"][];
         };
         /** HTTPValidationError */
         HTTPValidationError: {
@@ -143,6 +153,12 @@ export interface components {
         };
         /** HealthResponse */
         HealthResponse: {
+            /** Status */
+            status: string;
+            /** Runtime Loaded */
+            runtime_loaded: boolean;
+            /** Memory Index Loaded */
+            memory_index_loaded: boolean;
             /** Archive Error */
             archive_error?: string | null;
             /**
@@ -150,36 +166,30 @@ export interface components {
              * @default 0
              */
             chunk_count: number;
-            /** Memory Index Loaded */
-            memory_index_loaded: boolean;
-            /** Runtime Loaded */
-            runtime_loaded: boolean;
-            /** Status */
-            status: string;
         };
         /** RetrievedFragmentModel */
         RetrievedFragmentModel: {
             /** Id */
             id: string;
-            /** Score */
-            score: number;
-            /** Source */
-            source: string;
             /** Title */
             title: string;
+            /** Source */
+            source: string;
+            /** Score */
+            score: number;
         };
         /** ValidationError */
         ValidationError: {
-            /** Context */
-            ctx?: Record<string, never>;
-            /** Input */
-            input?: unknown;
             /** Location */
             loc: (string | number)[];
             /** Message */
             msg: string;
             /** Error Type */
             type: string;
+            /** Input */
+            input?: unknown;
+            /** Context */
+            ctx?: Record<string, never>;
         };
     };
     responses: never;
