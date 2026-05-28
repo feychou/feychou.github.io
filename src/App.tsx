@@ -221,19 +221,30 @@ function SimpleList({ items }: SimpleListProps) {
 }
 
 function App() {
-  const [isGhostAwake, setIsGhostAwake] = useState(false);
-  const ghostState = isGhostAwake ? 'awake' : 'dormant';
-  const toggleGhostAwake = () => {
+  const [isGhostChamberOn, setIsGhostChamberOn] = useState(false);
+  const [hasGhostAwakened, setHasGhostAwakened] = useState(false);
+  const chamberState = isGhostChamberOn ? 'on' : 'off';
+  const ghostState = hasGhostAwakened ? 'awake' : 'sleeping';
+  const keepScrollStill = () => {
     const scrollLeft = window.scrollX;
     const scrollTop = window.scrollY;
     const restoreScroll = () => window.scrollTo(scrollLeft, scrollTop);
 
-    setIsGhostAwake((currentIsAwake) => !currentIsAwake);
     window.requestAnimationFrame(() => {
       restoreScroll();
       window.requestAnimationFrame(restoreScroll);
     });
     window.setTimeout(restoreScroll, 120);
+  };
+  const bootGhost = () => {
+    setHasGhostAwakened(false);
+    setIsGhostChamberOn(true);
+    keepScrollStill();
+  };
+  const suspendGhost = () => {
+    setIsGhostChamberOn(false);
+    setHasGhostAwakened(false);
+    keepScrollStill();
   };
 
   return (
@@ -243,10 +254,17 @@ function App() {
         <span>ACTIVE ARCHIVE</span>
       </div>
 
-      <main className="archive-layout" data-ghost-state={ghostState}>
+      <main
+        className="archive-layout"
+        data-chamber-state={chamberState}
+        data-ghost-state={ghostState}
+      >
         <GhostChannel
-          isAwake={isGhostAwake}
-          onToggleAwake={toggleGhostAwake}
+          hasGhostAwakened={hasGhostAwakened}
+          isChamberOn={isGhostChamberOn}
+          onAwakeningSucceeded={() => setHasGhostAwakened(true)}
+          onBootGhost={bootGhost}
+          onSuspendGhost={suspendGhost}
         />
 
         <section className="portfolio-section">

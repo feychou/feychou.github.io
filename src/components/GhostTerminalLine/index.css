@@ -1,0 +1,145 @@
+.ghost-channel-line {
+  position: relative;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  opacity: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  animation: ghost-terminal-line-in 420ms steps(2, end) forwards;
+  animation-delay: var(--ghost-line-delay);
+}
+
+.ghost-channel-line::selection {
+  color: var(--bg);
+  background: var(--pink-pale);
+}
+
+.ghost-channel-line.is-gap {
+  min-height: 0.22em;
+  animation-duration: 1ms;
+}
+
+.ghost-channel-line-process {
+  color: rgba(255, 208, 223, 0.9);
+}
+
+.ghost-channel-line-title {
+  margin-top: 2px;
+  color: var(--pink-hot);
+  font-family: ElectroShackle, "Courier New", monospace;
+  font-size: clamp(16px, 1.45vw, 21px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-shadow:
+    0 0 12px rgba(255, 134, 182, 0.46),
+    1px 0 0 rgba(119, 217, 154, 0.16);
+}
+
+.ghost-channel-line-system {
+  color: rgba(255, 208, 223, 0.76);
+}
+
+.ghost-channel-line-error {
+  color: rgba(255, 186, 209, 0.94);
+  font-weight: 700;
+  text-shadow:
+    0 0 10px rgba(255, 95, 151, 0.36),
+    1px 0 0 rgba(119, 217, 154, 0.12);
+}
+
+.ghost-channel-line-input {
+  color: rgba(255, 134, 182, 0.94);
+}
+
+.ghost-channel-line-reply {
+  color: rgba(255, 220, 231, 0.9);
+}
+
+.ghost-channel-line-wait {
+  color: rgba(255, 208, 223, 0.58);
+}
+
+.ghost-channel-line-ready {
+  color: var(--pink-pale);
+  font-weight: 700;
+  text-shadow:
+    0 0 11px rgba(255, 134, 182, 0.42),
+    1px 0 0 rgba(255, 95, 151, 0.2);
+}
+
+.ghost-channel-line.is-broken::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  color: rgba(119, 217, 154, 0.62);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(1px);
+  clip-path: inset(0 0 58% 0);
+  animation: ghost-terminal-line-break 2.7s steps(1, end) both;
+  animation-delay: calc(var(--ghost-line-delay) + 80ms);
+}
+
+@keyframes ghost-terminal-line-in {
+  0% {
+    opacity: 0;
+    filter: blur(0.7px);
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  18% {
+    opacity: 0.86;
+    transform: translate3d(1px, 0, 0);
+  }
+
+  27% {
+    opacity: 0.42;
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  46% {
+    opacity: 1;
+    filter: blur(0.2px);
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ghost-terminal-line-break {
+  0%,
+  13%,
+  27%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  7% {
+    opacity: 0.58;
+    transform: translateX(2px);
+  }
+
+  18% {
+    opacity: 0.28;
+    transform: translateX(-1px);
+  }
+
+  23% {
+    opacity: 0.5;
+    transform: translateX(1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost-channel-line {
+    opacity: 1;
+    animation: none;
+  }
+}

@@ -122,7 +122,7 @@ a:focus {
     filter 520ms ease;
 }
 
-.archive-layout[data-ghost-state="awake"] .portfolio-section {
+.archive-layout[data-chamber-state="on"] .portfolio-section {
   opacity: 0.34;
   filter: blur(1.8px) brightness(0.64) saturate(0.88);
   pointer-events: none;
@@ -308,7 +308,7 @@ a:focus {
     grid-template-columns: 1fr;
   }
 
-  .archive-layout[data-ghost-state="awake"] {
+  .archive-layout[data-chamber-state="on"] {
     gap: 22px;
   }
 
@@ -320,7 +320,7 @@ a:focus {
     width: 100%;
   }
 
-  .archive-layout[data-ghost-state="awake"] .portfolio-section {
+  .archive-layout[data-chamber-state="on"] .portfolio-section {
     opacity: 0.42;
     filter: blur(1.2px) brightness(0.7) saturate(0.9);
   }

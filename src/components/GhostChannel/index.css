@@ -14,11 +14,11 @@
 }
 
 @media (max-width: 959px) {
-  .ghost-slot[data-ghost-state="awake"] {
+  .ghost-slot[data-chamber-state="on"] {
     min-height: clamp(610px, 88vh, 760px);
   }
 
-  .ghost-slot[data-ghost-state="awake"] .ghost-body {
+  .ghost-slot[data-chamber-state="on"] .ghost-body {
     min-height: clamp(610px, 88vh, 760px);
   }
 }

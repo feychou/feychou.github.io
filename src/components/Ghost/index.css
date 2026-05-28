@@ -25,8 +25,11 @@
     filter 560ms ease;
 }
 
-.ghost-slot[data-ghost-state="awake"] .ghost-stage {
+.ghost-slot[data-chamber-state="on"] .ghost-stage {
   --ghost-chamber-glow-opacity: 0.64;
+}
+
+.ghost-slot[data-ghost-state="awake"] .ghost-stage {
   --ghost-dormant-figure-opacity: 0;
   --ghost-awake-figure-opacity: 1;
   --ghost-dormant-figure-filter:
@@ -124,9 +127,7 @@
     rgba(5, 7, 10, 0.8);
   background-size: 100% 4px, auto;
   cursor: pointer;
-  font-family: ElectroShackle, "Courier New", monospace;
   font-weight: 700;
-  letter-spacing: 0;
   font-size: 18px;
   outline: 0;
   transform: translate(-50%, -50%);
@@ -154,7 +155,7 @@
 }
 
 @media (max-width: 959px) {
-  .ghost-slot[data-ghost-state="awake"] .ghost-stage {
+  .ghost-slot[data-chamber-state="on"] .ghost-stage {
     opacity: 0.52;
     filter:
       blur(0.24px)

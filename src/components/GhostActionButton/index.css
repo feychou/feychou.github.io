@@ -3,11 +3,25 @@ button.ghost-action-button {
   align-items: center;
   justify-content: center;
   gap: var(--ghost-action-gap);
+  font-family: ElectroShackle, "Courier New", monospace;
+  letter-spacing: 0;
 }
 
 button.ghost-action-button .ghost-action-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
   min-width: 0;
   white-space: nowrap;
+}
+
+button.ghost-action-button .ghost-action-prefix,
+button.ghost-action-button .ghost-action-text {
+  display: inline-block;
+}
+
+button.ghost-action-button .ghost-action-prefix {
+  margin-right: 0.34ch;
 }
 
 button.ghost-action-button .ghost-action-icon {

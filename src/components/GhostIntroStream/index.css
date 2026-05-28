@@ -1,0 +1,50 @@
+.ghost-channel-intro-stream {
+  display: block;
+  max-width: min(100%, 700px);
+  color: rgba(255, 220, 231, 0.92);
+  font-weight: 400;
+  line-height: 1.44;
+  overflow-wrap: anywhere;
+  text-shadow:
+    0 0 9px rgba(255, 95, 151, 0.2),
+    1px 0 0 rgba(119, 217, 154, 0.06);
+  white-space: pre-wrap;
+}
+
+.ghost-channel-intro-emphasis {
+  color: var(--pink-pale);
+  font-weight: 700;
+  text-shadow:
+    0 0 11px rgba(255, 134, 182, 0.42),
+    1px 0 0 rgba(255, 95, 151, 0.2);
+}
+
+.ghost-channel-type-caret {
+  display: inline-block;
+  width: 0.62ch;
+  height: 1.05em;
+  margin-left: 2px;
+  background: var(--pink-hot);
+  box-shadow: 0 0 12px rgba(255, 134, 182, 0.64);
+  transform: translateY(0.16em);
+  animation: ghost-terminal-caret 1.05s steps(1, end) infinite;
+}
+
+@keyframes ghost-terminal-caret {
+  0%,
+  54% {
+    opacity: 1;
+  }
+
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost-channel-type-caret {
+    opacity: 1;
+    animation: none;
+  }
+}

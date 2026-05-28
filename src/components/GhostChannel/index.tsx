@@ -3,27 +3,46 @@ import GhostTerminal from '../GhostTerminal';
 import './index.css';
 
 const ghostStateLabels = {
-  dormant: 'Dormant ghost container',
+  sleeping: 'Sleeping ghost container',
   awake: 'Awake ghost container',
 };
 
 type GhostChannelProps = {
-  isAwake: boolean;
-  onToggleAwake: () => void;
+  hasGhostAwakened: boolean;
+  isChamberOn: boolean;
+  onAwakeningSucceeded: () => void;
+  onBootGhost: () => void;
+  onSuspendGhost: () => void;
 };
 
-function GhostChannel({ isAwake, onToggleAwake }: GhostChannelProps) {
-  const ghostState = isAwake ? 'awake' : 'dormant';
+function GhostChannel({
+  hasGhostAwakened,
+  isChamberOn,
+  onAwakeningSucceeded,
+  onBootGhost,
+  onSuspendGhost,
+}: GhostChannelProps) {
+  const chamberState = isChamberOn ? 'on' : 'off';
+  const ghostState = hasGhostAwakened ? 'awake' : 'sleeping';
 
   return (
     <aside
       className="ghost-slot"
+      data-chamber-state={chamberState}
       data-ghost-state={ghostState}
       aria-label={ghostStateLabels[ghostState]}
     >
       <div className="ghost-body">
-        <Ghost isAwake={isAwake} onToggleAwake={onToggleAwake} />
-        <GhostTerminal isAwake={isAwake} onSuspend={onToggleAwake} />
+        <Ghost
+          hasGhostAwakened={hasGhostAwakened}
+          isChamberOn={isChamberOn}
+          onBootGhost={onBootGhost}
+        />
+        <GhostTerminal
+          isChamberOn={isChamberOn}
+          onAwakeningSucceeded={onAwakeningSucceeded}
+          onSuspend={onSuspendGhost}
+        />
       </div>
     </aside>
   );

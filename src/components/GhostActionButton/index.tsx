@@ -6,9 +6,11 @@ type GhostActionButtonProps = {
   ariaPressed?: boolean;
   children: ReactNode;
   className: string;
-  iconClassName: string;
-  iconHref: string;
-  onClick: () => void;
+  disabled?: boolean;
+  iconClassName?: string;
+  iconHref?: string;
+  onClick?: () => void;
+  type?: 'button' | 'submit';
 };
 
 function GhostActionButton({
@@ -16,25 +18,37 @@ function GhostActionButton({
   ariaPressed,
   children,
   className,
+  disabled,
   iconClassName,
   iconHref,
   onClick,
+  type = 'button',
 }: GhostActionButtonProps) {
   return (
     <button
       className={`ghost-action-button ${className}`}
-      type="button"
+      type={type}
       aria-label={ariaLabel}
       aria-pressed={ariaPressed}
+      disabled={disabled}
       onClick={(event) => {
         event.currentTarget.blur();
-        onClick();
+        onClick?.();
       }}
     >
-      <span className="ghost-action-label">{children}</span>
-      <svg className={`ghost-action-icon ${iconClassName}`} viewBox="0 0 24 24" aria-hidden="true">
-        <use href={iconHref} />
-      </svg>
+      <span className="ghost-action-label">
+        <span className="ghost-action-prefix" aria-hidden="true">&gt; </span>
+        <span className="ghost-action-text">{children}</span>
+      </span>
+      {iconHref && (
+        <svg
+          className={`ghost-action-icon ${iconClassName ?? ''}`}
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <use href={iconHref} />
+        </svg>
+      )}
     </button>
   );
 }

@@ -3,9 +3,9 @@ import './index.css';
 import './glitch.css';
 
 const ghostStates = {
-  dormant: {
-    stageLabel: 'Dormant ghost chamber',
-    figureAlt: 'Dormant ghost suspended in the container',
+  sleeping: {
+    stageLabel: 'Sleeping ghost chamber',
+    figureAlt: 'Sleeping ghost suspended in the container',
   },
   awake: {
     stageLabel: 'Awake ghost chamber',
@@ -14,28 +14,29 @@ const ghostStates = {
 };
 
 type GhostProps = {
-  isAwake: boolean;
-  onToggleAwake: () => void;
+  hasGhostAwakened: boolean;
+  isChamberOn: boolean;
+  onBootGhost: () => void;
 };
 
-function Ghost({ isAwake, onToggleAwake }: GhostProps) {
-  const ghostState = isAwake ? 'awake' : 'dormant';
+function Ghost({ hasGhostAwakened, isChamberOn, onBootGhost }: GhostProps) {
+  const ghostState = hasGhostAwakened ? 'awake' : 'sleeping';
   const currentGhost = ghostStates[ghostState];
 
   return (
     <>
-      {!isAwake && (
+      {!isChamberOn && (
         <GhostActionButton
           className="ghost-initialize"
-          ariaLabel="initialize ghost"
+          ariaLabel="boot ghost"
           ariaPressed={false}
           iconClassName="ghost-lock-icon"
           iconHref="/assets/icons/lock.svg#icon"
           onClick={() => {
-            onToggleAwake();
+            onBootGhost();
           }}
         >
-          &gt; initialize ghost
+          boot ghost
         </GhostActionButton>
       )}
 
