@@ -1,0 +1,66 @@
+.ghost-chat-thread {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 700px);
+  margin-top: 18px;
+}
+
+.ghost-chat-message {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.ghost-chat-message-prefix {
+  color: rgba(255, 134, 182, 0.88);
+}
+
+.ghost-chat-message-user {
+  color: rgba(255, 134, 182, 0.96);
+}
+
+.ghost-chat-message-ghost {
+  color: rgba(255, 220, 231, 0.92);
+}
+
+.ghost-chat-message-system {
+  color: rgba(255, 186, 209, 0.94);
+  font-weight: 700;
+  text-shadow:
+    0 0 10px rgba(255, 95, 151, 0.32),
+    1px 0 0 rgba(119, 217, 154, 0.1);
+}
+
+.ghost-chat-type-caret {
+  display: inline-block;
+  width: 0.62ch;
+  height: 1.05em;
+  margin-left: 3px;
+  background: var(--pink-hot);
+  box-shadow: 0 0 12px rgba(255, 134, 182, 0.64);
+  transform: translateY(0.16em);
+  animation: ghost-chat-caret 1.05s steps(1, end) infinite;
+}
+
+@keyframes ghost-chat-caret {
+  0%,
+  54% {
+    opacity: 1;
+  }
+
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost-chat-type-caret {
+    opacity: 1;
+    animation: none;
+  }
+}

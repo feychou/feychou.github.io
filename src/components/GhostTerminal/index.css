@@ -180,12 +180,15 @@
 }
 
 .ghost-channel-body {
+  --ghost-terminal-log-x-padding: clamp(20px, 3vw, 36px);
+  --ghost-terminal-log-y-padding: clamp(24px, 3.2vw, 36px);
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
   flex: 1 1 auto;
   min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   background:
     linear-gradient(90deg, rgba(255, 95, 151, 0.12), transparent 1px) 28px 0 / 1px 100% no-repeat,
     linear-gradient(180deg, rgba(255, 95, 151, 0.1), transparent 1px) 0 42px / 100% 1px no-repeat,
@@ -243,12 +246,15 @@
   position: relative;
   z-index: 2;
   display: grid;
+  flex: 1 1 auto;
   align-content: start;
   gap: 3px;
   box-sizing: border-box;
-  max-width: min(100%, 680px);
-  min-height: 100%;
-  padding: clamp(24px, 3.2vw, 36px) clamp(20px, 3vw, 36px);
+  width: min(100%, 680px);
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: var(--ghost-terminal-log-y-padding) var(--ghost-terminal-log-x-padding);
   color: rgba(255, 208, 223, 0.88);
   font-family: "Courier New", monospace;
   font-size: clamp(13px, 1.05vw, 15px);
@@ -265,19 +271,19 @@
 }
 
 .ghost-channel-log.is-awakened {
-  max-width: min(100%, 730px);
+  width: min(100%, 730px);
   align-content: start;
 }
 
-.ghost-channel-body::-webkit-scrollbar {
+.ghost-channel-log::-webkit-scrollbar {
   width: 8px;
 }
 
-.ghost-channel-body::-webkit-scrollbar-track {
+.ghost-channel-log::-webkit-scrollbar-track {
   background: rgba(8, 6, 11, 0.38);
 }
 
-.ghost-channel-body::-webkit-scrollbar-thumb {
+.ghost-channel-log::-webkit-scrollbar-thumb {
   border: 2px solid rgba(8, 6, 11, 0.38);
   border-radius: 999px;
   background: rgba(255, 95, 151, 0.42);

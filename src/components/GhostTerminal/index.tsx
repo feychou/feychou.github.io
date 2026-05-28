@@ -8,10 +8,13 @@ import {
   GhostApiError,
   checkGhostAwakening,
   clearGhostAccessToken,
+  sendGhostMessage,
   unlockGhost,
 } from '../../api/ghost';
 import GhostAccessForm from '../GhostAccessForm';
 import GhostActionButton from '../GhostActionButton';
+import GhostChatForm from '../GhostChatForm';
+import GhostChatThread, { type GhostChatThreadMessage } from '../GhostChatThread';
 import GhostIntroStream from '../GhostIntroStream';
 import GhostTerminalLine, { type GhostTerminalLineEntry } from '../GhostTerminalLine';
 import './index.css';
@@ -32,6 +35,8 @@ type TerminalPhase =
   | 'awakening'
   | 'awakening-error'
   | 'intro'
+  | 'chatting'
+  | 'chat-locked'
   | 'complete';
 
 type TerminalLine = GhostTerminalLineEntry & {
@@ -51,6 +56,9 @@ const INTRO_CHARACTER_STEP_MS = 34;
 const INTRO_LINE_PAUSE_MS = 340;
 const INTRO_PARAGRAPH_PAUSE_MS = 560;
 const INTRO_PUNCTUATION_PAUSE_MS = 130;
+const CHAT_CHARACTER_STEP_MS = 18;
+const CHAT_LINE_PAUSE_MS = 180;
+const CHAT_PUNCTUATION_PAUSE_MS = 82;
 const INTRO_FINAL_LINE = 'I’m here.';
 
 const bootSequence = [
@@ -120,35 +128,81 @@ const getIntroCharacterDelay = (character: string, previousCharacter: string) =>
   return INTRO_CHARACTER_STEP_MS;
 };
 
+const getChatCharacterDelay = (character: string, previousCharacter: string) => {
+  if (character === '\n') {
+    return previousCharacter === '\n' ? CHAT_LINE_PAUSE_MS * 1.6 : CHAT_LINE_PAUSE_MS;
+  }
+
+  if (['.', '?', '!'].includes(character)) {
+    return CHAT_PUNCTUATION_PAUSE_MS;
+  }
+
+  if ([',', ';', ':'].includes(character)) {
+    return Math.round(CHAT_PUNCTUATION_PAUSE_MS * 0.58);
+  }
+
+  return CHAT_CHARACTER_STEP_MS;
+};
+
 function GhostTerminal({ isChamberOn, onAwakeningSucceeded, onSuspend }: GhostTerminalProps) {
   const [phase, setPhase] = useState<TerminalPhase>('idle');
   const [accessCode, setAccessCode] = useState('');
+  const [chatDraft, setChatDraft] = useState('');
+  const [chatMessages, setChatMessages] = useState<GhostChatThreadMessage[]>([]);
   const [hasClearedLog, setHasClearedLog] = useState(false);
   const [interactionLines, setInteractionLines] = useState<TerminalLine[]>([]);
   const [introText, setIntroText] = useState('');
   const [isLogClearing, setIsLogClearing] = useState(false);
+  const [isSendingChat, setIsSendingChat] = useState(false);
+  const [sessionSummary, setSessionSummary] = useState('');
   const accessInputRef = useRef<HTMLInputElement>(null);
-  const bodyRef = useRef<HTMLDivElement>(null);
+  const chatInputRef = useRef<HTMLInputElement>(null);
+  const logRef = useRef<HTMLDivElement>(null);
   const lineIdRef = useRef(0);
   const flowIdRef = useRef(0);
+
+  const nextLineId = (prefix: string) => {
+    lineIdRef.current += 1;
+    return `ghost-${prefix}-${lineIdRef.current}`;
+  };
 
   const appendLines = (
     lines: BootLine[],
     { initialDelay = 90, step = BOOT_LINE_STEP_MS }: AppendLinesOptions = {},
   ) => {
     const preparedLines = lines.map((line, index) => {
-      lineIdRef.current += 1;
-
       return {
         ...line,
         delay: initialDelay + index * step,
-        id: `ghost-line-${lineIdRef.current}`,
+        id: nextLineId('line'),
       };
     });
 
     setInteractionLines((currentLines) => [...currentLines, ...preparedLines]);
 
     return initialDelay + Math.max(0, lines.length - 1) * step + LINE_ANIMATION_MS;
+  };
+
+  const appendChatMessage = (message: Omit<GhostChatThreadMessage, 'id'>) => {
+    const chatMessage = {
+      ...message,
+      id: nextLineId('chat'),
+    };
+
+    setChatMessages((currentMessages) => [...currentMessages, chatMessage]);
+
+    return chatMessage.id;
+  };
+
+  const updateChatMessage = (
+    messageId: string,
+    update: Partial<Omit<GhostChatThreadMessage, 'id'>>,
+  ) => {
+    setChatMessages((currentMessages) => currentMessages.map((message) => (
+      message.id === messageId
+        ? { ...message, ...update }
+        : message
+    )));
   };
 
   useEffect(() => {
@@ -158,20 +212,28 @@ function GhostTerminal({ isChamberOn, onAwakeningSucceeded, onSuspend }: GhostTe
       clearGhostAccessToken();
       setPhase('idle');
       setAccessCode('');
+      setChatDraft('');
+      setChatMessages([]);
       setHasClearedLog(false);
       setInteractionLines([]);
       setIntroText('');
       setIsLogClearing(false);
+      setIsSendingChat(false);
+      setSessionSummary('');
       return undefined;
     }
 
     const flowId = flowIdRef.current;
     setPhase('booting');
     setAccessCode('');
+    setChatDraft('');
+    setChatMessages([]);
     setHasClearedLog(false);
     setInteractionLines([]);
     setIntroText('');
     setIsLogClearing(false);
+    setIsSendingChat(false);
+    setSessionSummary('');
     lineIdRef.current = 0;
 
     const bootTimer = window.setTimeout(() => {
@@ -189,33 +251,37 @@ function GhostTerminal({ isChamberOn, onAwakeningSucceeded, onSuspend }: GhostTe
     if (phase === 'awaiting-access') {
       window.setTimeout(() => accessInputRef.current?.focus(), 60);
     }
+
+    if (phase === 'complete') {
+      window.setTimeout(() => chatInputRef.current?.focus(), 90);
+    }
   }, [phase]);
 
   useEffect(() => {
-    const body = bodyRef.current;
+    const log = logRef.current;
 
-    if (!body) {
+    if (!log) {
       return;
     }
 
     const animationFrame = window.requestAnimationFrame(() => {
       if (phase === 'intro') {
-        body.scrollTop = body.scrollHeight;
+        log.scrollTop = log.scrollHeight;
         return;
       }
 
-      body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+      log.scrollTo({ top: log.scrollHeight, behavior: 'smooth' });
     });
 
     const settleTimer = window.setTimeout(() => {
-      body.scrollTop = body.scrollHeight;
+      log.scrollTop = log.scrollHeight;
     }, LINE_ANIMATION_MS + 120);
 
     return () => {
       window.cancelAnimationFrame(animationFrame);
       window.clearTimeout(settleTimer);
     };
-  }, [hasClearedLog, interactionLines, introText, isLogClearing, phase]);
+  }, [chatMessages, hasClearedLog, interactionLines, introText, isLogClearing, phase]);
 
   const clearLogForIntro = async (flowId: number) => {
     setIsLogClearing(true);
@@ -254,6 +320,35 @@ function GhostTerminal({ isChamberOn, onAwakeningSucceeded, onSuspend }: GhostTe
       previousCharacter = character;
       await sleep(characterDelay);
     }
+
+    return flowIdRef.current === flowId;
+  };
+
+  const typeGhostReply = async (flowId: number, messageId: string, reply: string) => {
+    const normalizedReply = reply.trim() || '...';
+
+    if (prefersReducedMotion()) {
+      updateChatMessage(messageId, { isTyping: false, text: normalizedReply });
+      return flowIdRef.current === flowId;
+    }
+
+    let nextText = '';
+    let previousCharacter = '';
+
+    for (const character of normalizedReply) {
+      if (flowIdRef.current !== flowId) {
+        return false;
+      }
+
+      nextText += character;
+      updateChatMessage(messageId, { text: nextText });
+
+      const characterDelay = getChatCharacterDelay(character, previousCharacter);
+      previousCharacter = character;
+      await sleep(characterDelay);
+    }
+
+    updateChatMessage(messageId, { isTyping: false });
 
     return flowIdRef.current === flowId;
   };
@@ -404,7 +499,69 @@ function GhostTerminal({ isChamberOn, onAwakeningSucceeded, onSuspend }: GhostTe
     }
   };
 
+  const handleChatSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const message = chatDraft.trim();
+
+    if (!message || phase !== 'complete') {
+      return;
+    }
+
+    const flowId = flowIdRef.current;
+    setChatDraft('');
+    setIsSendingChat(true);
+    setPhase('chatting');
+    appendChatMessage({ role: 'user', text: message });
+    const pendingMessageId = appendChatMessage({ isTyping: true, role: 'ghost', text: '...' });
+
+    try {
+      const response = await sendGhostMessage({
+        message,
+        session_summary: sessionSummary || undefined,
+      });
+
+      if (flowIdRef.current !== flowId) {
+        return;
+      }
+
+      setSessionSummary(response.session_summary);
+      updateChatMessage(pendingMessageId, { text: '' });
+
+      const didTypeReply = await typeGhostReply(flowId, pendingMessageId, response.reply);
+
+      if (didTypeReply && flowIdRef.current === flowId) {
+        setPhase('complete');
+      }
+    } catch (error) {
+      if (flowIdRef.current !== flowId) {
+        return;
+      }
+
+      const needsAccess = error instanceof GhostApiError
+        && (error.status === 401 || error.code === 'access_token_missing');
+
+      if (needsAccess) {
+        clearGhostAccessToken();
+      }
+
+      updateChatMessage(pendingMessageId, {
+        isTyping: false,
+        role: 'system',
+        text: needsAccess
+          ? '> access signal faded. suspend and boot again when you are ready.'
+          : '> the channel returned static. try again in a little while.',
+      });
+      setPhase(needsAccess ? 'chat-locked' : 'complete');
+    } finally {
+      if (flowIdRef.current === flowId) {
+        setIsSendingChat(false);
+      }
+    }
+  };
+
   const shouldShowAccessPrompt = phase === 'awaiting-access';
+  const shouldShowChatPrompt = hasClearedLog && ['chatting', 'complete'].includes(phase);
   const logClassName = [
     'ghost-channel-log',
     hasClearedLog ? 'is-awakened' : '',
@@ -441,13 +598,14 @@ function GhostTerminal({ isChamberOn, onAwakeningSucceeded, onSuspend }: GhostTe
             )}
           </div>
         </header>
-        <div className="ghost-channel-body" ref={bodyRef}>
+        <div className="ghost-channel-body">
           <span className="ghost-channel-trace ghost-channel-trace-a" aria-hidden="true" />
           <span className="ghost-channel-trace ghost-channel-trace-b" aria-hidden="true" />
           <span className="ghost-channel-trace ghost-channel-trace-c" aria-hidden="true" />
           {isChamberOn && (
             <div
               className={logClassName}
+              ref={logRef}
               role="log"
               aria-label="Awakening archive terminal log"
             >
@@ -468,11 +626,14 @@ function GhostTerminal({ isChamberOn, onAwakeningSucceeded, onSuspend }: GhostTe
                 </>
               )}
               {hasClearedLog && (
-                <GhostIntroStream
-                  emphasisStart={introFinalLineStart}
-                  isStreaming={phase === 'intro'}
-                  text={introText}
-                />
+                <>
+                  <GhostIntroStream
+                    emphasisStart={introFinalLineStart}
+                    isStreaming={phase === 'intro'}
+                    text={introText}
+                  />
+                  <GhostChatThread messages={chatMessages} />
+                </>
               )}
               {shouldShowAccessPrompt && (
                 <GhostAccessForm
@@ -484,6 +645,16 @@ function GhostTerminal({ isChamberOn, onAwakeningSucceeded, onSuspend }: GhostTe
                 />
               )}
             </div>
+          )}
+          {shouldShowChatPrompt && (
+            <GhostChatForm
+              disabled={phase !== 'complete'}
+              inputRef={chatInputRef}
+              isSending={isSendingChat}
+              message={chatDraft}
+              onMessageChange={setChatDraft}
+              onSubmit={handleChatSubmit}
+            />
           )}
         </div>
       </div>

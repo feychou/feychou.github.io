@@ -1,0 +1,134 @@
+.ghost-chat-form {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  flex: 0 0 auto;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 8px;
+  width: min(
+    660px,
+    calc(100% - var(--ghost-terminal-log-x-padding) - var(--ghost-terminal-log-x-padding))
+  );
+  margin:
+    0
+    0
+    var(--ghost-terminal-log-y-padding)
+    var(--ghost-terminal-log-x-padding);
+  padding-top: 10px;
+  color: rgba(255, 220, 231, 0.92);
+  opacity: 0;
+  animation: ghost-chat-form-in 420ms steps(2, end) forwards;
+  animation-delay: 80ms;
+}
+
+.ghost-chat-form label {
+  color: rgba(255, 134, 182, 0.94);
+  white-space: nowrap;
+}
+
+.ghost-chat-form input {
+  min-width: 0;
+  height: 30px;
+  padding: 0 6px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 95, 151, 0.58);
+  border-radius: 0;
+  color: var(--pink-pale);
+  background: rgba(5, 7, 10, 0.3);
+  caret-color: var(--pink-hot);
+  font: inherit;
+  line-height: 1;
+  outline: 0;
+}
+
+.ghost-chat-form input:focus {
+  border-color: rgba(255, 208, 223, 0.9);
+  box-shadow: 0 5px 12px -10px rgba(255, 134, 182, 0.92);
+}
+
+.ghost-chat-form input:disabled {
+  opacity: 0.56;
+}
+
+.ghost-chat-submit {
+  --ghost-action-gap: 6px;
+  --ghost-action-icon-size: 14px;
+  position: relative;
+  z-index: 2;
+  min-height: 28px;
+  padding: 0 8px 0 9px;
+  border: 1px solid rgba(255, 95, 151, 0.58);
+  border-radius: 4px;
+  color: var(--pink-hot);
+  background: rgba(10, 7, 12, 0.62);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    border-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.ghost-chat-submit:hover:not(:disabled),
+.ghost-chat-submit:focus-visible:not(:disabled) {
+  border-color: rgba(255, 208, 223, 0.88);
+  color: var(--pink-pale);
+  box-shadow:
+    0 0 0 1px rgba(255, 208, 223, 0.1),
+    0 0 12px rgba(255, 95, 151, 0.22);
+}
+
+.ghost-chat-submit:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
+@keyframes ghost-chat-form-in {
+  0% {
+    opacity: 0;
+    filter: blur(0.7px);
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  18% {
+    opacity: 0.86;
+    transform: translate3d(1px, 0, 0);
+  }
+
+  27% {
+    opacity: 0.42;
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  46% {
+    opacity: 1;
+    filter: blur(0.2px);
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 720px) {
+  .ghost-chat-form {
+    grid-template-columns: 1fr max-content;
+  }
+
+  .ghost-chat-form label {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost-chat-form {
+    opacity: 1;
+    animation: none;
+  }
+}
