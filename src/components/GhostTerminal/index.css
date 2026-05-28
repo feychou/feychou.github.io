@@ -250,7 +250,7 @@
   align-content: start;
   gap: 3px;
   box-sizing: border-box;
-  width: min(100%, 680px);
+  width: 100%;
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -264,6 +264,10 @@
     1px 0 0 rgba(119, 217, 154, 0.08);
 }
 
+.ghost-channel-log > * {
+  max-width: min(100%, 680px);
+}
+
 .ghost-channel-log.is-clearing {
   pointer-events: none;
   transform-origin: 32px 50%;
@@ -271,8 +275,11 @@
 }
 
 .ghost-channel-log.is-awakened {
-  width: min(100%, 730px);
   align-content: start;
+}
+
+.ghost-channel-log.is-awakened > * {
+  max-width: min(100%, 730px);
 }
 
 .ghost-channel-log::-webkit-scrollbar {
