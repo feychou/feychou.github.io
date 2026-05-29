@@ -25,7 +25,6 @@ const contacts = [
   ['email', 'feychoo@gmail.com'],
   ['mubi', 'Fey', 'https://mubi.com/users/9938385'],
   ['goodreads', 'Fey', 'https://www.goodreads.com/review/list/28849942?shelf=read'],
-  ['coursera', 'alisa', 'https://www.coursera.org/user/91390a08d1d625f59a626ac7070a6fd3'],
   ['duolingo', 'fey.chu', 'https://www.duolingo.com/profile/fey.chu'],
   ['instagram', 'fey.chu', 'https://www.instagram.com/fey.chu/']
 ] satisfies Contact[];
