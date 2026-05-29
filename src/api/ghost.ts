@@ -1,6 +1,6 @@
 import type { components } from '../generated/ghost-api';
 
-const DEFAULT_GHOST_API_BASE_URL = 'http://127.0.0.1:8000';
+const DEV_GHOST_API_BASE_URL = 'http://127.0.0.1:8000';
 
 type JsonObject = Record<string, unknown>;
 
@@ -22,6 +22,7 @@ export type GhostApiOptions = {
 };
 
 export type GhostApiErrorCode =
+  | 'base_url_missing'
   | 'access_token_missing'
   | 'http_error'
   | 'invalid_json'
@@ -105,7 +106,15 @@ export function clearGhostAccessToken(): void {
 }
 
 function ghostApiBaseUrl(baseUrl = import.meta.env.VITE_GHOST_API_BASE_URL): string {
-  return removeTrailingSlash(baseUrl || DEFAULT_GHOST_API_BASE_URL);
+  const resolvedBaseUrl = baseUrl || (import.meta.env.DEV ? DEV_GHOST_API_BASE_URL : undefined);
+
+  if (!resolvedBaseUrl) {
+    throw new GhostApiError('Ghost API base URL is not configured.', {
+      code: 'base_url_missing',
+    });
+  }
+
+  return removeTrailingSlash(resolvedBaseUrl);
 }
 
 async function requestJson<ResponseBody, RequestBody = never>(
@@ -136,10 +145,11 @@ async function requestJson<ResponseBody, RequestBody = never>(
     headers.set('Authorization', `Bearer ${accessToken}`);
   }
 
+  const url = buildGhostApiUrl(path, options.baseUrl);
   let response: Response;
 
   try {
-    response = await fetcher(buildGhostApiUrl(path, options.baseUrl), {
+    response = await fetcher(url, {
       body: request.body === undefined ? undefined : JSON.stringify(request.body),
       credentials: 'omit',
       headers,
