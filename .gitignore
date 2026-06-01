@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+# local build caches
+.vite/
+
 # testing
 /coverage
 
@@ -15,4 +18,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
