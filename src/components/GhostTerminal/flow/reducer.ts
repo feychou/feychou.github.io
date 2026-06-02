@@ -1,5 +1,5 @@
-import { type GhostChatThreadMessage } from '../GhostChatThread';
-import type { TerminalLine, TerminalPhase } from './types';
+import { type GhostChatThreadMessage } from '../../GhostChatThread';
+import type { TerminalLine, TerminalPhase } from '../types';
 
 export type GhostTerminalState = {
   accessCode: string;
@@ -14,7 +14,7 @@ export type GhostTerminalState = {
   sessionSummary: string;
 };
 
-type GhostTerminalAction =
+export type GhostTerminalAction =
   | { type: 'access_code_changed'; accessCode: string }
   | { type: 'access_prompt_requested' }
   | { type: 'access_submit_started' }
@@ -41,6 +41,8 @@ type GhostTerminalAction =
   | { type: 'lines_appended'; lines: TerminalLine[] }
   | { type: 'log_cleared_for_intro' }
   | { type: 'log_clear_started' };
+
+export type GhostTerminalDispatch = (action: GhostTerminalAction) => void;
 
 export const initialTerminalState: GhostTerminalState = {
   accessCode: '',

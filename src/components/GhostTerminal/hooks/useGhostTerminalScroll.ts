@@ -1,5 +1,5 @@
 import { useEffect, type RefObject } from 'react';
-import { LINE_ANIMATION_MS } from './timing';
+import { LINE_ANIMATION_MS } from '../timing';
 
 type UseGhostTerminalScrollOptions = {
   chatMessages: readonly unknown[];

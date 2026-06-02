@@ -1,7 +1,7 @@
 import GhostActionButton from '../GhostActionButton';
 import GhostChatForm from '../GhostChatForm';
 import GhostTerminalLog from './GhostTerminalLog';
-import { useGhostTerminalFlow } from './useGhostTerminalFlow';
+import { useGhostTerminalFlow } from './flow/useGhostTerminalFlow';
 import './index.css';
 
 type GhostTerminalProps = {

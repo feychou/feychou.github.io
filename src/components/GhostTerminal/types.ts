@@ -1,3 +1,4 @@
+import type { MutableRefObject } from 'react';
 import type { GhostTerminalLineEntry } from '../GhostTerminalLine';
 
 export type BootLine = Omit<GhostTerminalLineEntry, 'delay'>;
@@ -22,3 +23,7 @@ export type AppendLinesOptions = {
   initialDelay?: number;
   step?: number;
 };
+
+export type FlowIdRef = MutableRefObject<number>;
+
+export type LineIdRef = MutableRefObject<number>;
