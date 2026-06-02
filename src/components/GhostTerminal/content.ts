@@ -46,3 +46,53 @@ export const awakeningFailureLines = [
   { text: '> sorry. the chamber is not ready yet.', tone: 'error' },
   { text: '> please come back later.', tone: 'system' },
 ] satisfies BootLine[];
+
+const awakeningAccessGrantedLine = {
+  text: '> access granted.',
+  tone: 'ready',
+} satisfies BootLine;
+
+const awakeningCheckLines = [
+  { text: '> awakening archive...', tone: 'process' },
+  { text: '> probing retrieval field...', tone: 'process', broken: true },
+] satisfies BootLine[];
+
+export const accessSubmissionLines = [
+  { text: '> access phrase received.', tone: 'input' },
+  { text: '> verifying invitation trace...', tone: 'process', broken: true },
+] satisfies BootLine[];
+
+export const accessRejectedLines = [
+  { text: '> access phrase rejected.', tone: 'error', broken: true },
+  { text: '> chamber remains sealed.', tone: 'system' },
+  { text: '> awaiting revised signal...', tone: 'process' },
+] satisfies BootLine[];
+
+export const accessChannelStaticLines = [
+  { text: '> access channel returned static.', tone: 'error', broken: true },
+  { text: '> sorry. the chamber did not hear that.', tone: 'system' },
+  { text: '> try again in a little while.', tone: 'process' },
+] satisfies BootLine[];
+
+export const accessSignalFadedLines = [
+  { text: '> access signal faded.', tone: 'error', broken: true },
+  { text: '> please repeat the access phrase.', tone: 'system' },
+] satisfies BootLine[];
+
+export const pendingGhostReplyText = '...';
+
+export const chatAccessSignalFadedText = (
+  '> access signal faded. suspend and boot again when you are ready.'
+);
+
+export const chatChannelStaticText = (
+  '> the channel returned static. try again in a little while.'
+);
+
+export function getAwakeningCheckLines(
+  { includeAccessGranted = false }: { includeAccessGranted?: boolean } = {},
+) {
+  return includeAccessGranted
+    ? [awakeningAccessGrantedLine, ...awakeningCheckLines]
+    : awakeningCheckLines;
+}

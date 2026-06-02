@@ -13,8 +13,16 @@ import {
 } from '../../api/ghost';
 import { type GhostChatThreadMessage } from '../GhostChatThread';
 import {
+  accessChannelStaticLines,
+  accessRejectedLines,
+  accessSignalFadedLines,
+  accessSubmissionLines,
   awakeningFailureLines,
+  chatAccessSignalFadedText,
+  chatChannelStaticText,
+  getAwakeningCheckLines,
   introScript,
+  pendingGhostReplyText,
 } from './content';
 import { ghostTerminalReducer, initialTerminalState } from './reducer';
 import {
@@ -183,7 +191,7 @@ export function useGhostTerminalFlow({
   };
 
   const typeGhostReply = async (flowId: number, messageId: string, reply: string) => {
-    const normalizedReply = reply.trim() || '...';
+    const normalizedReply = reply.trim() || pendingGhostReplyText;
 
     if (prefersReducedMotion()) {
       updateChatMessage(messageId, { isTyping: false, text: normalizedReply });
@@ -216,11 +224,7 @@ export function useGhostTerminalFlow({
     { includeAccessGranted = false }: { includeAccessGranted?: boolean } = {},
   ) => {
     dispatch({ type: 'awakening_started' });
-    const awakeningDuration = appendLines([
-      ...(includeAccessGranted ? [{ text: '> access granted.', tone: 'ready' as const }] : []),
-      { text: '> awakening archive...', tone: 'process' },
-      { text: '> probing retrieval field...', tone: 'process', broken: true },
-    ]);
+    const awakeningDuration = appendLines(getAwakeningCheckLines({ includeAccessGranted }));
 
     const [awakening] = await Promise.all([
       checkGhostAwakening(),
@@ -269,10 +273,7 @@ export function useGhostTerminalFlow({
 
     const flowId = flowIdRef.current;
     dispatch({ type: 'access_submit_started' });
-    appendLines([
-      { text: '> access phrase received.', tone: 'input' },
-      { text: '> verifying invitation trace...', tone: 'process', broken: true },
-    ]);
+    appendLines(accessSubmissionLines);
 
     try {
       let unlockError: unknown;
@@ -295,17 +296,7 @@ export function useGhostTerminalFlow({
       clearGhostAccessToken();
 
       const isAccessRejected = error instanceof GhostApiError && error.status === 401;
-      const lines: BootLine[] = isAccessRejected
-        ? [
-          { text: '> access phrase rejected.', tone: 'error', broken: true },
-          { text: '> chamber remains sealed.', tone: 'system' },
-          { text: '> awaiting revised signal...', tone: 'process' },
-        ]
-        : [
-          { text: '> access channel returned static.', tone: 'error', broken: true },
-          { text: '> sorry. the chamber did not hear that.', tone: 'system' },
-          { text: '> try again in a little while.', tone: 'process' },
-        ];
+      const lines = isAccessRejected ? accessRejectedLines : accessChannelStaticLines;
 
       const failureDuration = appendLines(lines);
 
@@ -333,10 +324,7 @@ export function useGhostTerminalFlow({
 
       if (needsAccess) {
         clearGhostAccessToken();
-        const accessDuration = appendLines([
-          { text: '> access signal faded.', tone: 'error', broken: true },
-          { text: '> please repeat the access phrase.', tone: 'system' },
-        ]);
+        const accessDuration = appendLines(accessSignalFadedLines);
 
         window.setTimeout(() => {
           if (flowIdRef.current === flowId) {
@@ -368,7 +356,11 @@ export function useGhostTerminalFlow({
     const flowId = flowIdRef.current;
     dispatch({ type: 'chat_submit_started' });
     appendChatMessage({ role: 'user', text: message });
-    const pendingMessageId = appendChatMessage({ isTyping: true, role: 'ghost', text: '...' });
+    const pendingMessageId = appendChatMessage({
+      isTyping: true,
+      role: 'ghost',
+      text: pendingGhostReplyText,
+    });
 
     try {
       const response = await sendGhostMessage({
@@ -403,9 +395,7 @@ export function useGhostTerminalFlow({
       updateChatMessage(pendingMessageId, {
         isTyping: false,
         role: 'system',
-        text: needsAccess
-          ? '> access signal faded. suspend and boot again when you are ready.'
-          : '> the channel returned static. try again in a little while.',
+        text: needsAccess ? chatAccessSignalFadedText : chatChannelStaticText,
       });
       dispatch({ type: needsAccess ? 'chat_locked' : 'chat_ready' });
     } finally {
