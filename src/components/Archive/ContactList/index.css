@@ -1,0 +1,29 @@
+.contact-list {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-list-row {
+  display: grid;
+  grid-template-columns: minmax(8ch, 0.78fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.contact-list-label {
+  color: var(--text);
+  min-width: 0;
+  text-transform: lowercase;
+}
+
+.contact-list-value {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 720px) {
+  .contact-list-row {
+    gap: 10px;
+  }
+}

@@ -1,0 +1,29 @@
+.link-list {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: baseline;
+  color: var(--text);
+}
+
+.link-list li::before {
+  content: ">";
+  color: var(--pink);
+}
+
+.link-list li span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.link-list li a {
+  white-space: nowrap;
+}

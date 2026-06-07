@@ -1,0 +1,21 @@
+.skill-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 0;
+  line-height: 1.6;
+}
+
+.skill-cloud span {
+  color: var(--text);
+}
+
+.skill-cloud s {
+  text-decoration-color: var(--pink);
+  text-decoration-thickness: 2px;
+}
+
+.skill-cloud span:not(:last-child)::after {
+  content: "•";
+  margin: 0 10px;
+  color: var(--pink);
+}
